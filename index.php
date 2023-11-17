@@ -13,7 +13,7 @@
    $dstop10=loadall_sanpham_top10();
    $topsale=loadall_sanpham_topsale();
    $spnew=loadall_sanpham_home();
-   $hangmoi=loadall_sanpham_hangmoi(0);
+   $hangmoi=loadall_sanpham_hangmoi();
 
    if(isset($_GET['act'])&&$_GET['act']!=""){
       $act = $_GET['act'];
