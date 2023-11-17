@@ -42,9 +42,6 @@
                }
                include 'view/chitietsanpham/chitietsanpham.php';
                break;     
-            case '123 321321':
-               echo '123';
-               break;
             }
       
    }else{
