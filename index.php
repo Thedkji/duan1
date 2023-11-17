@@ -41,7 +41,11 @@
                   extract($load_one_dm);
                }
                include 'view/chitietsanpham/chitietsanpham.php';
-               break;      }
+               break;     
+            case '123 321321':
+               echo '123';
+               break;
+            }
       
    }else{
       include "view/index/home.php";
