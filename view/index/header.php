@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="assets/css/helper.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
-    <title>Trang chủ</title>
+    <title>Trang chủ 123</title>
 </head>
 
 <body>
