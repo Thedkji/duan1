@@ -38,7 +38,7 @@
                     <span class="price new-price">
                         <?= number_format($gia_sp) ?>
                     </span>
-                    <span class="regular-price">$77.00</span>
+                    <span class="regular-price">$80.00</span>
                 </div>
 
                 <div class="single-product-quantity">
