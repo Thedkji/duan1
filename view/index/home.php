@@ -146,12 +146,12 @@
                         echo '
                         <div class="single-product mb-30">
                             <div class="product-img">
-                                <a href="#"><img src="img/'.$img.'" alt="" ></a>    
+                                <a href="index.php?act=chitietsanpham&idsp='.$id_sanpham.'&iddm='.$id_danhmuc.'"><img src="img/'.$img.'" alt="" ></a>    
                                 <div class="product-action d-flex justify-content-between">
-                                 <a class="product-btn" href="index.php?act=chitietsanpham">Add to Cart</a>  </div>
+                                 <a class="product-btn" href="index.php?act=chitietsanpham&idsp='.$id_sanpham.'&iddm='.$id_danhmuc.'">Add to Cart</a>  </div>
                              </div>
                             <div class="product-content">
-                                <h3><a href="index.php?act=chitietsanpham&idsp='.$id_sanpham.'&iddm='.$id_danhmuc.'" width=> '.$ten_sp.'</a></h3>
+                                <h3><a href="index.php?act=chitietsanpham&idsp='.$id_sanpham.'&iddm='.$id_danhmuc.'" > '.$ten_sp.'</a></h3>
                                 <h4 class="price"><span class="new">'.number_format($gia_sp).'</span><span style="color: red; font-size: 16px;">đ</span></h4>
                                 </div>
                         </div>';
