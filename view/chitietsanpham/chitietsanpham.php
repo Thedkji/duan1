@@ -35,10 +35,10 @@
                     <?= $ten_sp ?>
                 </h2>
                 <div class="single-product-price">
-                    <span class="price new-price">
+                    <span class="price new-price" style="color:red;">
                         <?= number_format($gia_sp) ?>
                     </span>
-                    <span class="regular-price">$80.00</span>
+                    <span class="regular-price" style=" color:gray;"><?= number_format($giacu) ?></span>
                 </div>
 
                 <div class="single-product-quantity">

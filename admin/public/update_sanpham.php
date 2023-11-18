@@ -44,6 +44,10 @@
                                             value="<?= $gia_sp ?>">
                                     </div>
                                     <div class="mb-3">
+                                        <input type="text" class="form-control" name="giacu" placeholder="Giá cũ sản phẩm"
+                                            value="<?= $giacu ?>">
+                                    </div>
+                                    <div class="mb-3">
                                         <label for="topic-name" class="col-form-label">Hình ảnh</label>
                                         <img src="../img/<?= $img ?>" alt="" width="200px"
                                             style="display: block; margin: auto;">

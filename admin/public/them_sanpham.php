@@ -43,6 +43,10 @@
                                             placeholder="Giá sản phẩm">
                                     </div>
                                     <div class="mb-3">
+                                        <input type="text" class="form-control" name="giacu"
+                                            placeholder="Giá cũ sản phẩm">
+                                    </div>
+                                    <div class="mb-3">
                                         <label for="topic-name" class="col-form-label">Hình ảnh</label>
                                         <input type="file" name="img" class="col-form-label" id="">
                                     </div>

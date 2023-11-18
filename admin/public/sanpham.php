@@ -37,6 +37,7 @@
                                         <th scope="col">Danh mục</th>
                                         <th scope="col">Tên sản phẩm</th>
                                         <th scope="col">Giá</th>
+                                        <th scope="col">Giá cũ</th>
                                         <th scope="col">Hình</th>
                                         <th scope="col">Ngày nhập</th>
                                         <th scope="col">Lượt xem</th>
@@ -58,6 +59,7 @@
                                             <th scope="col"><?= $ten_danhmuc ?></th>
                                             <th scope="col"><?= $ten_sp ?></th>
                                             <th scope="col"><?= $gia_sp ?></th>
+                                            <th scope="col"><?= $giacu ?></th>
                                             <th scope="col"><img src="../img/<?= $img ?>" alt="" width="200px"></th>
                                             <th scope="col"><?= $ngay_nhap ?></th>
                                             <th scope="col"><?= $luotxem ?></th>

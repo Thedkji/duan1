@@ -152,7 +152,8 @@
                              </div>
                             <div class="product-content">
                                 <h3><a href="index.php?act=chitietsanpham&idsp='.$id_sanpham.'&iddm='.$id_danhmuc.'" > '.$ten_sp.'</a></h3>
-                                <h4 class="price"><span class="new">'.number_format($gia_sp).'</span><span style="color: red; font-size: 16px;">đ</span></h4>
+                                <h4 class="price"><span class="new">'.number_format($gia_sp).'</span><span style="color: red; font-size: 16px;">đ</span>
+                                <span class="regular-price" style="font-size: 16px; color:gray;"><del>'.number_format($giacu).'đ</span></del></h4>
                                 </div>
                         </div>';
                         $i+=1;
