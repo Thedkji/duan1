@@ -51,6 +51,7 @@ if (isset($_GET['act'])) {
                 if (isset($_POST['suasanpham'])) {
                     $ten_sp = $_POST['ten_sp'];
                     $gia_sp = $_POST['gia_sp'];
+                    $giacu = $_POST['giacu'];
 
                     $name_img = $_FILES['img']['name'];
                     $tmp_img = $_FILES['img']['tmp_name'];
@@ -60,7 +61,7 @@ if (isset($_GET['act'])) {
                     $mo_ta = $_POST['mo_ta'];
                     $id_danhmuc = $_POST['id_danhmuc'];
 
-                    update_sanpham($_GET['id_sanpham'], $ten_sp, $gia_sp, $name_img, $ngay_nhap, $mo_ta, $id_danhmuc);
+                    update_sanpham($_GET['id_sanpham'], $ten_sp, $gia_sp, $giacu, $name_img, $ngay_nhap, $mo_ta, $id_danhmuc);
                     header('location:index.php?act=sanpham');
                 }
             }

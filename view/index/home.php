@@ -251,12 +251,12 @@
                                         
                                        echo '<div class="single-list-product">
                                             <div class="product-image">
-                                                <a href="#"><img
+                                                <a href="index.php?act=chitietsanpham&idsp='.$id_sanpham.'&iddm='.$id_danhmuc.'"><img
                                                         src=img/'.$img.'></a>
                                             </div>
                                             <div class="product-content">
-                                                <h3><a href="#">'.$ten_sp.' </a></h3>
-                                                <h4 class="price"><span class="new">'.number_format($gia_sp).'<span><span style="color: #cea679; font-size: 14px;"> đ</span></h4>
+                                                <h3><a href="index.php?act=chitietsanpham&idsp='.$id_sanpham.'&iddm='.$id_danhmuc.'">'.$ten_sp.' </a></h3>
+                                                <h4 class="price"><span class="new" style="color:red;">'.number_format($gia_sp).'</span><span style=" font-size: 14px;">đ</span></h4>
                                                         
                                             </div>
                                         </div>';
@@ -286,12 +286,12 @@
                                            
                                        echo '<div class="single-list-product">
                                             <div class="product-image">
-                                                <a href="#"><img
+                                                <a href="index.php?act=chitietsanpham&idsp='.$id_sanpham.'&iddm='.$id_danhmuc.'"><img
                                                         src=img/'.$img.'></a>
                                             </div>
                                             <div class="product-content">
-                                                <h3><a href="#">'.$ten_sp.'</a></h3>
-                                                <h4 class="price"><span class="new">'.number_format($gia_sp).'</span><span style="color: #cea679; font-size: 14px;">đ</span></h4>
+                                                <h3><a href="index.php?act=chitietsanpham&idsp='.$id_sanpham.'&iddm='.$id_danhmuc.'">'.$ten_sp.'</a></h3>
+                                                <h4 class="price"><span class="new" style="color:red;">'.number_format($gia_sp).'</span><span style=" font-size: 14px;">đ</span></h4>
                                             </div>
                                         </div>';
                                         }
@@ -319,12 +319,12 @@
                                        
                                         echo '<div class="single-list-product">
                                             <div class="product-image">
-                                                <a href="#"><img
+                                                <a href="index.php?act=chitietsanpham&idsp='.$id_sanpham.'&iddm='.$id_danhmuc.'"><img
                                                         src=img/'.$img.'></a>
                                             </div>
                                             <div class="product-content">
-                                                <h3><a href="#">'.$ten_sp.'</a></h3>
-                                                <h4 class="price"><span class="new">'.number_format($gia_sp).'</span><span style="color: #cea679; font-size: 14px;">đ</span></h4>
+                                                <h3><a href="index.php?act=chitietsanpham&idsp='.$id_sanpham.'&iddm='.$id_danhmuc.'">'.$ten_sp.'</a></h3>
+                                                <h4 class="price"><span class="new" style="color:red;">'.number_format($gia_sp).'</span><span style=" font-size: 14px;">đ</span></h4>
                                             </div>
                                         </div>';
                                     }

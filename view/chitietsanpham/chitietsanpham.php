@@ -37,8 +37,10 @@
                 <div class="single-product-price">
                     <span class="price new-price" style="color:red;">
                         <?= number_format($gia_sp) ?>
-                    </span>
-                    <span class="regular-price" style=" color:gray;"><?= number_format($giacu) ?></span>
+                    <span>
+                    <span>đ</span>
+                    <span class="regular-price" style=" color:gray;"><?= number_format($giacu) ?><span>
+                    <span>đ</span></h4>
                 </div>
 
                 <div class="single-product-quantity">

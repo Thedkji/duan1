@@ -32,11 +32,11 @@ function load_onesp($id_sanpham){
     return $load_onesp;
 }
 
-function update_sanpham($id_sanpham,$ten_sp, $gia_sp, $name_img, $ngay_nhap, $mo_ta, $id_danhmuc){
+function update_sanpham($id_sanpham,$ten_sp, $gia_sp,$giacu, $name_img, $ngay_nhap, $mo_ta, $id_danhmuc){
     if($name_img!=""){
-        $sql="update sanpham set ten_sp='$ten_sp',gia_sp=$gia_sp,img='$name_img',ngay_nhap='$ngay_nhap',mo_ta='$mo_ta',id_danhmuc=$id_danhmuc where id_sanpham=$id_sanpham";
+        $sql="update sanpham set ten_sp='$ten_sp',gia_sp=$gia_sp,giacu=$giacu,img='$name_img',ngay_nhap='$ngay_nhap',mo_ta='$mo_ta',id_danhmuc=$id_danhmuc where id_sanpham=$id_sanpham";
     }else{
-        $sql="update sanpham set ten_sp='$ten_sp',gia_sp=$gia_sp,ngay_nhap='$ngay_nhap',mo_ta='$mo_ta',id_danhmuc=$id_danhmuc where id_sanpham=$id_sanpham";
+        $sql="update sanpham set ten_sp='$ten_sp',gia_sp=$gia_sp,giacu=$giacu,ngay_nhap='$ngay_nhap',mo_ta='$mo_ta',id_danhmuc=$id_danhmuc where id_sanpham=$id_sanpham";
     }
     pdo_execute($sql);
 }
