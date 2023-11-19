@@ -4,6 +4,7 @@
    include_once "model/pdo.php";
    include "model/sanpham.php";
    include "model/danhmuc.php";
+   include "model/taikhoan.php";
    include "view/index/header.php";
    include "golbal.php";
 
@@ -41,8 +42,39 @@
                   extract($load_one_dm);
                }
                include 'view/chitietsanpham/chitietsanpham.php';
-               break;     
+               break; 
+            case "dangky":
+                  if(isset($_POST['dangky'])&&($_POST['dangky'])){
+                  $email=$_POST['email'];
+                  $user=$_POST['user'];
+                  $pass=$_POST['pass'];
+                  insert_taikhoan($email,$user,$pass);
+                  $thongbao="Đã đăng ký thành công. Vui lòng đăng nhập để thực hiện chức năng bình luận hoặc đặt hàng!";   
+                  }
+  
+                      include "view/taikhoan/taikhoan.php";
+                      break;     
+            case 'dangnhap':
+                  if(isset($_POST['dangnhap'])&&($_POST['dangnhap'])){
+                  $user=$_POST['user'];
+                  $pass=$_POST['pass'];
+                  $checkuser=checkuser($user,$pass);
+                  if(is_array($checkuser)){
+                   $_SESSION['user']=$checkuser;
+                            //  $thongbao=" Bạn đã đăng nhập thành công!";
+                  header('Location: index.php');
+                   }else{
+                    $thongbao="Tài khoản không tồn tại.Vui lòng kiểm tra hoặc đăng ký!";
+                  }
+                
+                                
+                         }
+                
+                        include "view/taikhoan/taikhoan.php";
+                        break;
+                   
             }
+
       
    }else{
       include "view/index/home.php";
