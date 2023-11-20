@@ -13,7 +13,14 @@ foreach ($listdanhmuc as $dsdm) {
     <?php foreach ($listsanpham as $dssp) {
         extract($dssp);
         ?>
+        <form action="index.php?act=add_giohang" method="post">
         <div class="itemsp">
+            <input type="hidden" value="<?= $img ?>" name="img">
+            <input type="hidden" value="<?= $id_sanpham ?>" name="id_sanpham">
+            <input type="hidden" value="<?= $ten_sp ?>" name="ten_sp">
+            <input type="hidden" value="<?= $gia_sp ?>" name="gia_sp">
+            <input type="hidden" value="<?= $giacu ?>" name="giacu">
+
             <div class="anhsp">
                 <img src="img/<?= $img ?>" alt="">
             </div>
@@ -28,16 +35,23 @@ foreach ($listdanhmuc as $dsdm) {
                         <?=number_format($gia_sp) ?>  <span style="color: red; font-size: 16px;">đ</span>
                     </p>
                 </div>
+                <div class="giacu" style=" text-decoration: line-through;">
+                    <p>
+                        <?=number_format($giacu) ?>  <span style="color: red; font-size: 16px;">đ</span>
+                    </p>
+                </div>
                 <div class="thongtinsanpham">
                     <div class="muahang">
                         <button><a href="">Mua hàng</a></button>
                     </div>
+                   
                     <div class="muahang">
-                        <button><a href="">Thêm vào giỏ</a></button>
+                        <input type="submit" name="add_giohang" value="Thêm vào giỏ" style="background-color: white;width: 122px;height: 50px;border:1px solid gray"></input>
                     </div>
                 </div>
             </div>
         </div>
+        </form>
     <?php } ?>
 </div>
 
