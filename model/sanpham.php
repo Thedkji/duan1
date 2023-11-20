@@ -41,22 +41,32 @@ function update_sanpham($id_sanpham,$ten_sp, $gia_sp,$giacu, $name_img, $ngay_nh
     pdo_execute($sql);
 }
 function loadall_sanpham_home(){
-    $sql="select *  from  sanpham where 1 order by id_sanpham desc limit 0,6";
+    $sql="select *  from  sanpham where 1 order by id_sanpham desc limit 0,12";
     $listsanpham=pdo_query($sql);
     return $listsanpham;
 }
 function loadall_sanpham_top10(){
-    $sql="select *  from  sanpham where 1 order by luotxem desc limit 0,4";
+    $sql="select *  from  sanpham where 1 order by luotxem desc limit 0,3";
     $listsanpham=pdo_query($sql);
     return $listsanpham;
 }
 function loadall_sanpham_topsale(){
-    $sql="select *  from  sanpham where 1 order by gia_sp asc limit 0,4";
+    $sql="select *  from  sanpham where 1 order by gia_sp asc limit 0,3";
     $listsanpham=pdo_query($sql);
     return $listsanpham;
 }
 function loadall_sanpham_hangmoi(){
     $sql="select *  from  sanpham where 1 order by ngay_nhap desc limit 0,3";
+    $listsanpham=pdo_query($sql);
+    return $listsanpham;
+}
+function loadall_sanpham_topchitiet(){
+    $sql="select *  from  sanpham where 1 order by luotxem desc limit 0,5";
+    $listsanpham=pdo_query($sql);
+    return $listsanpham;
+}
+function loadall_sanpham_hangmoict(){
+    $sql="select *  from  sanpham where 1 order by ngay_nhap desc limit 0,5";
     $listsanpham=pdo_query($sql);
     return $listsanpham;
 }

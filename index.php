@@ -11,10 +11,12 @@ include "golbal.php";
 
 
 
-$dstop10 = loadall_sanpham_top10();
-$topsale = loadall_sanpham_topsale();
-$spnew = loadall_sanpham_home();
-$hangmoi = loadall_sanpham_hangmoi();
+$dstop10=loadall_sanpham_top10();
+$sptopct=loadall_sanpham_topchitiet();
+$topsale=loadall_sanpham_topsale();
+$spnew=loadall_sanpham_home();
+$hangmoi=loadall_sanpham_hangmoi();
+$hangmoict=loadall_sanpham_hangmoict();
 
 if (isset($_GET['act']) && $_GET['act'] != "") {
    $act = $_GET['act'];

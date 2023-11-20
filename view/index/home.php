@@ -18,17 +18,17 @@
                 }}
             ]'>
                 <!--Hero Item start-->
-                <div class="hero-item bg-image" data-bg="./assets/images/hero/hero-2.jpg">
+                <div class="hero-item bg-image" data-bg="./assets/images/hero/banner9.png" style="height:500px;">
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
                                 <!--Hero Content start-->
-                                <div class="hero-content-2 color-2">
+                                <!-- <div class="hero-content-2 color-2">
                                     <h2>view our</h2>
                                     <h1>Women's hair</h1>
                                     <h3>Products now</h3>
                                     <a href="index.php?act=sanpham">Shop Now</a>
-                                </div>
+                                </div> -->
                                 <!--Hero Content end-->
                             </div>
                         </div>
@@ -37,7 +37,7 @@
                 <!--Hero Item end-->
 
                 <!--Hero Item start-->
-                <div class="hero-item bg-image" data-bg="./assets/images/hero/hezo3.png ">
+                <div class="hero-item bg-image" data-bg="./assets/images/hero/hezo3.png "style="height:500px;">
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
