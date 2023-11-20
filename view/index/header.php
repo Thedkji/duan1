@@ -37,17 +37,36 @@
                         </div>
                         <div class="col-xl-6 col-lg-4">
                             <div class="ht-right d-flex justify-content-lg-end justify-content-center">
+                               <?php if(isset($_SESSION['user'])&& is_array($_SESSION['user'])){?>
                                 <ul class="ht-us-menu d-flex">
-                                    <li><a href="#"><i class="fa fa-user-circle-o"></i>Login</a>
+                                    <li><a href="index.php?act=dangnhap"><i class="fa fa-user-circle-o"></i><?= $_SESSION['user']['user']?></a>
                                         <ul class="ht-dropdown right">
-                                            <!-- <li><a href="compare.html">Compare Products</a></li> -->
-                                            <li><a href="my-account.html">My Account</a></li>
                                             <!-- <li><a href="wishlist.html">My Wish List</a></li> -->
-                                            <li><a href="index.php?act=dangky">Sign In</a></li>
+                                            <li><a href="index.php?act=thongtincuatoi">Thông tin của tôi</a></li>
+                                            <?php
+                                            if($_SESSION['user']['role'] == 1){
+                                            ?>
+                                            <li><a href="admin/index.php">Trang quản trị</a></li>
+                                            <?php }?>
+                                            <li><a href="index.php?act=dangxuat">Đăng xuất</a></li>
                                             <!-- <li><a href="login-register.html">Sign In</a></li> -->
                                         </ul>
                                     </li>
                                 </ul>
+                                <?php }else{?>
+                                    <ul class="ht-us-menu d-flex">
+                                    <li><a href="index.php?act=dangnhap"><i class="fa fa-user-circle-o"></i>Tài khoản</a>
+                                        <ul class="ht-dropdown right">
+                                            <!-- <li><a href="compare.html">Compare Products</a></li> -->
+                                            <li><a href="index.php?act=dangnhap">Đăng nhập</a></li>
+                                            <!-- <li><a href="wishlist.html">My Wish List</a></li> -->
+                                            <li><a href="index.php?act=dangky">Đăng ký</a></li>
+                                            <li><a href="index.php?act=quenmatkhau">Quên Mật khẩu</a></li>
+                                            <!-- <li><a href="login-register.html">Sign In</a></li> -->
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
