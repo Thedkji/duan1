@@ -27,7 +27,7 @@ foreach ($listdanhmuc as $dsdm) {
             <div class="thongtinsp">
                 <div class="tensp">
                     <h4>
-                        <?= $ten_sp ?>
+                        <a href="index.php?act=chitietsanpham&idsp=<?= $id_sanpham ?>&iddm=<?= $id_danhmuc?>"><?= $ten_sp ?></a>
                     </h4>
                 </div>
                 <div class="giasp">

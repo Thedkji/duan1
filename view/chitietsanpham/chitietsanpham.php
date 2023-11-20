@@ -21,6 +21,7 @@
         <div class="row">
             <div class="col-md-5">
                 <!-- Product Details Left -->
+                <form class="add-quantity" action="index.php?act=add_giohang" method="post">
                 <div class="product-details-left"
                     style="background-color: aqua;width: 400px; height: 400px;border-radius:10px">
                     <img src="img/<?= $img ?>" alt="" width="100%" height="100%" style="border-radius:10px ;">
@@ -37,19 +38,26 @@
                 <div class="single-product-price">
                     <span class="price new-price" style="color:red;">
                         <?= number_format($gia_sp) ?>
-                    <span>
-                    <span>đ</span>
-                    <span class="regular-price" style=" color:gray;"><?= number_format($giacu) ?><span>
-                    <span>đ</span></h4>
+                        <span>
+                            <span>đ</span>
+                            <span class="regular-price" style=" color:gray;">
+                                <?= number_format($giacu) ?><span>
+                                    <span>đ</span></h4>
                 </div>
 
                 <div class="single-product-quantity">
-                    <form class="add-quantity" action="#">
+                    
+                        <input type="hidden" value="<?= $img ?>" name="img">
+                        <input type="hidden" value="<?= $id_sanpham ?>" name="id_sanpham">
+                        <input type="hidden" value="<?= $ten_sp ?>" name="ten_sp">
+                        <input type="hidden" value="<?= $gia_sp ?>" name="gia_sp">
+                        <input type="hidden" value="<?= $giacu ?>" name="giacu">
+
                         <div class="product-quantity">
                             <input value="1" type="number">
                         </div>
                         <div class="add-to-link">
-                            <button class="product-add-btn" data-text="add to cart">add to cart</button>
+                            <input type="submit" class="product-add-btn" data-text="add to cart" value="Thêm vào giỏ hàng" name="add_giohang"></input>
                         </div>
                     </form>
                 </div>
@@ -100,7 +108,7 @@
                     <div class="tab-content product-review-content-tab" id="myTabContent-4">
                         <div class="tab-pane fade active show" id="description">
                             <div class="single-product-description">
-                            <?= $mo_ta?>
+                                <?= $mo_ta ?>
                             </div>
                         </div>
                         <!--Review And Description Tab Content End-->
@@ -125,26 +133,96 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <!--Product Description Review Section Start-->
+
+            <!--Product section start-->
+            <div
+                class="product-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-65 pb-lg-45 pb-md-35 pb-sm-25 pb-xs-15">
+                <div class="container">
+
+                    <div class="row">
+                        <!-- Section Title Start -->
+                        <div class="col">
+                            <div class="section-title mb-40 mb-xs-20">
+                                <h2> Sản phẩm bán chạy</h2>
+                            </div>
+                        </div>
+                        <!-- Section Title End -->
+                    </div>
+                    <div class="row tf-element-carousel" data-slick-options='{
+                "slidesToShow": 4,
+                "slidesToScroll": 1,
+                "infinite": true,
+                "arrows": true,
+                "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fa fa-angle-left" },
+                "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fa fa-angle-right" }
+                }' data-slick-responsive='[
+                {"breakpoint":1199, "settings": {
+                "slidesToShow": 3
+                }},
+                {"breakpoint":992, "settings": {
+                "slidesToShow": 2
+                }},
+                {"breakpoint":768, "settings": {
+                "slidesToShow": 2,
+                "arrows": false,
+                "autoplay": true
+                }},
+                {"breakpoint":576, "settings": {
+                "slidesToShow": 1,
+                "arrows": false,
+                "autoplay": true
+                }}
+                ]'>
+                        <?php
+                        foreach ($sptopct as $sp) {
+                            extract($sp);
+                            echo '   
+                   <div class="col-lg-3">
+                        <!-- Single Product Start -->
+                        
+                        <div class="single-product mb-30">
+                            <div class="product-img">
+                            <a href="index.php?act=chitietsanpham&idsp=' . $id_sanpham . '&iddm=' . $id_danhmuc . '">
+                            <img src=img/' . $img . '></a>
+                                <div class="product-action d-flex justify-content-between">
+                                    <a class="product-btn" href="index.php?act=chitietsanpham&idsp=' . $id_sanpham . '&iddm=' . $id_danhmuc . '">Add to Cart</a>
+                                </div>
+                            </div>
+                            <div class="product-content">
+                                <h3><a href="index.php?act=chitietsanpham&idsp=' . $id_sanpham . '&iddm=' . $id_danhmuc . '">' . $ten_sp . '</a></h3>
+                                <h4 class="price"><span class="new">' . number_format($gia_sp) . '</span></span><span style=" font-size: 14px; color: red;">đ</span></h4>
+                            </div>
+                            </div>
+                        </div>';
+                        }
+                        ?>
+                        <!-- Single Product End -->
+                    </div>
                 </div>
             </div>
         </div>
-        <!--Product Description Review Section Start-->
+    </div>
 
-        <!--Product section start-->
-        <div
-            class="product-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-65 pb-lg-45 pb-md-35 pb-sm-25 pb-xs-15">
-            <div class="container">
+    <!--Product section end-->
 
-                <div class="row">
-                    <!-- Section Title Start -->
-                    <div class="col">
-                        <div class="section-title mb-40 mb-xs-20">
-                            <h2> Sản phẩm bán chạy</h2>
-                        </div>
+    <!--Product section start-->
+    <div class="product-section section pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20">
+        <div class="container">
+
+            <div class="row">
+                <!-- Section Title Start -->
+                <div class="col">
+                    <div class="section-title mb-40 mb-xs-20">
+                        <h2>Sản phẩm mới</h2>
                     </div>
-                    <!-- Section Title End -->
                 </div>
-                <div class="row tf-element-carousel" data-slick-options='{
+                <!-- Section Title End -->
+            </div>
+            <div class="row tf-element-carousel" data-slick-options='{
                 "slidesToShow": 4,
                 "slidesToScroll": 1,
                 "infinite": true,
@@ -170,104 +248,34 @@
                 }}
                 ]'>
                 <?php
-               foreach ($sptopct as $sp) {
-                   extract($sp);
-                   echo '   
+                foreach ($hangmoict as $sp) {
+                    extract($sp);
+                    echo '   
                    <div class="col-lg-3">
                         <!-- Single Product Start -->
                         
                         <div class="single-product mb-30">
                             <div class="product-img">
-                            <a href="index.php?act=chitietsanpham&idsp='.$id_sanpham.'&iddm='.$id_danhmuc.'">
-                            <img src=img/'.$img.'></a>
+                            <a href="index.php?act=chitietsanpham&idsp=' . $id_sanpham . '&iddm=' . $id_danhmuc . '">
+                            <img src=img/' . $img . '></a>
                                 <div class="product-action d-flex justify-content-between">
-                                    <a class="product-btn" href="index.php?act=chitietsanpham&idsp='.$id_sanpham.'&iddm='.$id_danhmuc.'">Add to Cart</a>
+                                    <a class="product-btn" href="index.php?act=chitietsanpham&idsp=' . $id_sanpham . '&iddm=' . $id_danhmuc . '">Add to Cart</a>
                                 </div>
                             </div>
                             <div class="product-content">
-                                <h3><a href="index.php?act=chitietsanpham&idsp='.$id_sanpham.'&iddm='.$id_danhmuc.'">'.$ten_sp.'</a></h3>
-                                <h4 class="price"><span class="new">'.number_format($gia_sp).'</span></span><span style=" font-size: 14px; color: red;">đ</span></h4>
+                                <h3><a href="index.php?act=chitietsanpham&idsp=' . $id_sanpham . '&iddm=' . $id_danhmuc . '">' . $ten_sp . '</a></h3>
+                                <h4 class="price"><span class="new">' . number_format($gia_sp) . '</span></span><span style=" font-size: 14px; color:red">đ</span></h4>
                             </div>
                             </div>
                         </div>';
-                            }
-                        ?>
-                        <!-- Single Product End -->
-                    </div>
-                        </div>
-                        </div>
-                </div>
+                }
+                ?>
+                <!-- Single Product End -->
             </div>
-        
-        <!--Product section end-->
 
-        <!--Product section start-->
-        <div class="product-section section pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20">
-            <div class="container">
-
-                <div class="row">
-                    <!-- Section Title Start -->
-                    <div class="col">
-                        <div class="section-title mb-40 mb-xs-20">
-                            <h2>Sản phẩm mới</h2>
-                        </div>
-                    </div>
-                    <!-- Section Title End -->
-                </div>
-                <div class="row tf-element-carousel" data-slick-options='{
-                "slidesToShow": 4,
-                "slidesToScroll": 1,
-                "infinite": true,
-                "arrows": true,
-                "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fa fa-angle-left" },
-                "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fa fa-angle-right" }
-                }' data-slick-responsive='[
-                {"breakpoint":1199, "settings": {
-                "slidesToShow": 3
-                }},
-                {"breakpoint":992, "settings": {
-                "slidesToShow": 2
-                }},
-                {"breakpoint":768, "settings": {
-                "slidesToShow": 2,
-                "arrows": false,
-                "autoplay": true
-                }},
-                {"breakpoint":576, "settings": {
-                "slidesToShow": 1,
-                "arrows": false,
-                "autoplay": true
-                }}
-                ]'>
-                <?php
-               foreach ($hangmoict as $sp) {
-                   extract($sp);
-                   echo '   
-                   <div class="col-lg-3">
-                        <!-- Single Product Start -->
-                        
-                        <div class="single-product mb-30">
-                            <div class="product-img">
-                            <a href="index.php?act=chitietsanpham&idsp='.$id_sanpham.'&iddm='.$id_danhmuc.'">
-                            <img src=img/'.$img.'></a>
-                                <div class="product-action d-flex justify-content-between">
-                                    <a class="product-btn" href="index.php?act=chitietsanpham&idsp='.$id_sanpham.'&iddm='.$id_danhmuc.'">Add to Cart</a>
-                                </div>
-                            </div>
-                            <div class="product-content">
-                                <h3><a href="index.php?act=chitietsanpham&idsp='.$id_sanpham.'&iddm='.$id_danhmuc.'">'.$ten_sp.'</a></h3>
-                                <h4 class="price"><span class="new">'.number_format($gia_sp).'</span></span><span style=" font-size: 14px; color:red">đ</span></h4>
-                            </div>
-                            </div>
-                        </div>';
-                            }
-                        ?>
-                        <!-- Single Product End -->
-                    </div>
-               
-                </div>
-            </div>
         </div>
-            </div>
-            </div>
-            </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
