@@ -1,5 +1,7 @@
 <?php
 session_start();
+if (!isset($_SESSION['giohang']))
+   $_SESSION['giohang'] = [];
 ob_start();
 include_once "model/pdo.php";
 include "model/sanpham.php";
@@ -11,12 +13,12 @@ include "golbal.php";
 
 
 
-$dstop10=loadall_sanpham_top10();
-$sptopct=loadall_sanpham_topchitiet();
-$topsale=loadall_sanpham_topsale();
-$spnew=loadall_sanpham_home();
-$hangmoi=loadall_sanpham_hangmoi();
-$hangmoict=loadall_sanpham_hangmoict();
+$dstop10 = loadall_sanpham_top10();
+$sptopct = loadall_sanpham_topchitiet();
+$topsale = loadall_sanpham_topsale();
+$spnew = loadall_sanpham_home();
+$hangmoi = loadall_sanpham_hangmoi();
+$hangmoict = loadall_sanpham_hangmoict();
 
 if (isset($_GET['act']) && $_GET['act'] != "") {
    $act = $_GET['act'];
@@ -48,10 +50,10 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
       case "dangky":
          if (isset($_POST['dangky']) && ($_POST['dangky'])) {
             $email = $_POST['email'];
-            $tel =   $_POST['tel'];
+            $tel = $_POST['tel'];
             $user = $_POST['user'];
             $pass = $_POST['pass'];
-            insert_taikhoan($email,$tel, $user,$pass,0);
+            insert_taikhoan($email, $tel, $user, $pass, 0);
             $thongbao = "Đã đăng ký thành công. Vui lòng đăng nhập để thực hiện chức năng bình luận hoặc đặt hàng!";
          }
 
@@ -74,38 +76,77 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
          include "view/taikhoan/dangnhap.php";
          break;
 
-         case 'dangxuat':
-            unset($_SESSION['user']);
-            header("location:index.php");
-            break;
-
-         case 'thongtincuatoi':
-            if(isset($_POST['capnhat']) && $_POST['capnhat']){
-               $id_user=$_POST['id_user'];
-               $email = $_POST['email'];
-               $tel =   $_POST['tel'];
-               $user = $_POST['user'];
-               $pass = $_POST['pass'];
-               $diachi = $_POST['diachi'];
-               update_taikhoan($id_user,$email,$tel, $user,$pass,$diachi);
-               $_SESSION['user'] = checkuser($user, $pass);
-               $thongbao = "Cập nhật thông tin thành công"; 
-            }
-            include "view/taikhoan/thongtin.php";
+      case 'dangxuat':
+         unset($_SESSION['user']);
+         header("location:index.php");
          break;
 
-         case 'quenmatkhau':
-            if(isset($_POST['timmatkhau']) && $_POST['timmatkhau']){
-               $email = $_POST['email'];
-               $check_email=check_email($email);
-               if(is_array($check_email)){
-                  $thongbao = "Mật khẩu của bạn là :".$check_email['pass'];
-               }else{
-                  $thongbao = "Ko tìm thấy mật khẩu vui lòng kiểm tra lại email";
-               }
+      case 'thongtincuatoi':
+         if (isset($_POST['capnhat']) && $_POST['capnhat']) {
+            $id_user = $_POST['id_user'];
+            $email = $_POST['email'];
+            $tel = $_POST['tel'];
+            $user = $_POST['user'];
+            $pass = $_POST['pass'];
+            $diachi = $_POST['diachi'];
+            update_taikhoan($id_user, $email, $tel, $user, $pass, $diachi);
+            $_SESSION['user'] = checkuser($user, $pass);
+            $thongbao = "Cập nhật thông tin thành công";
+         }
+         include "view/taikhoan/thongtin.php";
+         break;
+
+      case 'quenmatkhau':
+         if (isset($_POST['timmatkhau']) && $_POST['timmatkhau']) {
+            $email = $_POST['email'];
+            $check_email = check_email($email);
+            if (is_array($check_email)) {
+               $thongbao = "Mật khẩu của bạn là :" . $check_email['pass'];
+            } else {
+               $thongbao = "Ko tìm thấy mật khẩu vui lòng kiểm tra lại email";
             }
-            include "view/taikhoan/quenmatkhau.php";
-            break;
+         }
+         include "view/taikhoan/quenmatkhau.php";
+         break;
+
+      case "add_giohang":
+         if (isset($_POST['add_giohang']) && $_POST['add_giohang']) {
+            $img = $_POST['img'];
+            $id_sanpham = $_POST['id_sanpham'];
+            $ten_sp = $_POST['ten_sp'];
+            $gia_sp = $_POST['gia_sp'];
+            $giacu = $_POST['giacu'];
+            $soluong = 1;
+            $fg = 0;
+            //kiểm tra sản phẩm xem có tồn tại trong giỏ hàng ko nếu có cập nhật lại số lượng
+            $i = 0;
+            foreach ($_SESSION['giohang'] as $item) {
+               if ($item[2] == $ten_sp) {
+                  $slnew = $soluong + $item[5];
+                  $_SESSION['giohang'][$i][5] = $slnew;
+                  $fg = 1;
+                  break;
+               }
+               $i++;
+            }
+            //Khởi tạo 1 mảng con trc khi đưa vào giỏ
+            if ($fg == 0) {
+               $item = array($id_sanpham, $img, $ten_sp, $gia_sp, $giacu, $soluong);
+               $_SESSION['giohang'][] = $item;
+            }
+            // unset($_SESSION['giohang']);
+         }
+         include "view/giohang/view_giohang.php";
+         break;
+
+      case 'xoa_giohang':
+         if (isset($_SESSION['giohang'])) {
+            unset($_SESSION['giohang']);
+         }
+         header('location:index.php');
+
+         # code...
+         break;
    }
 
 
