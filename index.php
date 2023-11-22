@@ -7,6 +7,7 @@ include_once "model/pdo.php";
 include "model/sanpham.php";
 include "model/danhmuc.php";
 include "model/taikhoan.php";
+include "model/donhang.php";
 include "view/index/header.php";
 include "golbal.php";
 
@@ -110,13 +111,19 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
          break;
 
       case "add_giohang":
+         $tongtien="";
          if (isset($_POST['add_giohang']) && $_POST['add_giohang']) {
+           
             $img = $_POST['img'];
             $id_sanpham = $_POST['id_sanpham'];
             $ten_sp = $_POST['ten_sp'];
             $gia_sp = $_POST['gia_sp'];
             $giacu = $_POST['giacu'];
-            $soluong = 1;
+            if(isset($_POST['sl']) &&($_POST['sl'])>0){
+               $soluong = $_POST['sl'];
+            }else{
+               $soluong = 1;
+            }
             $fg = 0;
             //kiểm tra sản phẩm xem có tồn tại trong giỏ hàng ko nếu có cập nhật lại số lượng
             $i = 0;
@@ -135,17 +142,52 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                $_SESSION['giohang'][] = $item;
             }
             // unset($_SESSION['giohang']);
+            
          }
          include "view/giohang/view_giohang.php";
          break;
 
       case 'xoa_giohang':
-         if (isset($_SESSION['giohang'])) {
-            unset($_SESSION['giohang']);
+         if(isset($_GET['i'])&& $_GET['i']>=0){
+            if(isset($_SESSION['giohang'])&& (count($_SESSION['giohang'])>=0))
+            array_splice($_SESSION['giohang'],$_GET['i'],1) ;//thứ tự : mảng , vị trí xóa , số lượng xóa
+         }else{
+            if (isset($_SESSION['giohang'])) {
+               unset($_SESSION['giohang']);
+            }
          }
-         header('location:index.php');
-
+        
+         if(isset($_SESSION['giohang'])&& (count($_SESSION['giohang'])>=0)){
+            header('location:index.php?act=add_giohang');
+         }else {
+            header('location:index.php');
+         }
+      
          # code...
+         break;
+      
+      case 'thanhtoan':
+         if(isset($_POST['btn-thanhtoan'])&&($_POST['btn-thanhtoan'])){
+            //lấy dữ liệu thanh toán
+            $tongtien=$_POST['tongtien'];
+            $diachi=$_POST['diachi'];
+            $tel=$_POST['tel'];
+            $email=$_POST['email'];
+            $phuongthuc_tt=$_POST['phuongthuc_tt'];
+            $madh="MQP".rand(0,9999);
+            //tạo đơn hàng và trả về 1 id đơn hàng
+            // $item = array($id_sanpham, $img, $ten_sp, $gia_sp, $giacu, $soluong);
+            $iddh=taodonhang($tongtien,$diachi,$tel,$email,$phuongthuc_tt,$madh);
+            if(isset($_SESSION['giohang'])&& (count($_SESSION['giohang'])>=0)){
+              foreach ($_SESSION['giohang'] as $item) { 
+                  addtocart($iddh,$item[0],$item[1],$item[2],$item[3],$item[5]);
+              } 
+              unset($_SESSION['giohang']);
+              header("location:index.php?act=add_giohang");
+            }
+            
+         }
+         include "view/thanhtoan/thanhtoan.php";
          break;
    }
 
