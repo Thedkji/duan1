@@ -58,6 +58,15 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="index.php?act=donhang" class="nav-link">
+            <i class="nav-icon fa-solid fa-user"></i>
+            <p>
+              Quản lí đơn hàng
+              
+            </p>
+          </a>
+        </li>
 
       </ul>
     </nav>

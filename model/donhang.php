@@ -10,4 +10,9 @@ function addtocart($iddh,$id_sanpham,$img,$ten_sp,$gia_sp,$soluong){
     pdo_execute($sql);
     return $sql;
 }
+function load_all_donhang(){
+    $sql="select * from donhang order by id_donhang desc";
+    $listdonhang = pdo_query($sql);
+    return $listdonhang;
+}
 ?>

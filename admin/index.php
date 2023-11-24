@@ -5,8 +5,10 @@ include_once('../model/danhmuc.php');
 include_once('../model/sanpham.php');
 include('../model/binhluan.php');
 include('../model/taikhoan.php');
+include('../model/donhang.php');
 include('public/head.php');
 include('public/nav.php');
+
 
 if (isset($_GET['act'])) {
     switch ($_GET['act']) {
@@ -130,6 +132,10 @@ if (isset($_GET['act'])) {
                 }
             $listtaikhoan=load_all_taikhoan();
             include('public/taikhoan.php');
+            break;
+        case 'donhang':
+            $listdonhang=load_all_donhang();
+            include('public/donhang.php');
             break;
         default:
             include('public/404.php');
