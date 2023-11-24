@@ -15,4 +15,8 @@ function load_all_donhang(){
     $listdonhang = pdo_query($sql);
     return $listdonhang;
 }
+function delete_donhang($id_donhang){
+    $sql="delete from donhang where id_donhang=$id_donhang ";
+    pdo_execute($sql);
+}
 ?>

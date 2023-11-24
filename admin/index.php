@@ -134,6 +134,15 @@ if (isset($_GET['act'])) {
             include('public/taikhoan.php');
             break;
         case 'donhang':
+            
+            $listdonhang=load_all_donhang();
+            include('public/donhang.php');
+            break;
+        case 'xoadonhang':
+            if(isset($_GET['id_donhang']) && $_GET['id_donhang'] > 0){
+                delete_donhang($_GET['id_donhang']);
+                header('location:index.php?act=donhang');
+            }
             $listdonhang=load_all_donhang();
             include('public/donhang.php');
             break;

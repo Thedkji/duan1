@@ -42,7 +42,8 @@
                                 </thead>
                                  <?php foreach ($listdonhang as $listdh) {
                                     extract($listdh);
-                                    
+                                    $xoa_donhang = 'index.php?act=xoadonhang&id_donhang='.$id_donhang;
+
                                     
                                 ?> 
 
@@ -57,8 +58,10 @@
                                             <th scope="col"><?= $email ?></th>
                                             <th scope="col"><?= $tel ?></th>
                                             <th scope="col"><?= $diachi ?></th>
-                                            <th scope="col"><?= $ngay_dathang ?></th>
-
+                                            <th scope="col"><?= $ngay_dathang=date('h:i:sa d/m/Y') ?></th>
+                                            <th><a href="<?= $xoa_donhang ?>"
+                                                onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"><input
+                                                    type="button" value="Xóa"></a></th>
                                            
                                         </tr>
                                     
