@@ -72,6 +72,7 @@
 <body>
 
 <table>
+
   <tr>
     <th>STT</th>
     <th>Ảnh</th>
@@ -82,32 +83,33 @@
     <th>Thành tiền</th>
     <th>Hành động</th>
   </tr>
-  <?php if (isset($_SESSION['giohang']) && count($_SESSION['giohang']) > 0) { ?>
-    <?php
-    $i = 0;
-    $tongtien = 0;
-    foreach ($_SESSION['giohang'] as $item) {
-      $tt = $item[3] * $item[5];
-      $tongtien += $tt;
-      ?>
-      <tr>
-        <td><?= ($i + 1) ?></td>
-        <td><img src="img/<?= $item[1] ?>" alt=""></td>
-        <td><?= $item[2] ?></td>
-        <td><?= number_format($item[3]) ?></td>
-        <td><?= number_format($item[4]) ?></td>
-        <td><?= $item[5] ?></td>
-        <td><?= number_format($tt) ?></td>
-        <td><a href="index.php?act=xoa_giohang&i=<?= $i ?>">Xóa</a></td>
-      </tr>
-      <?php $i++;
-    } ?>
-    <tr class="total-row">
+  
+  <?php $i = 1;
+  $j=0;
+  $tongtien=0;
+  foreach($_SESSION['giohang'] as $giohang)
+  {
+    $tongtien+=$giohang[6];
+    $_SESSION['tongtien']=$tongtien;
+  ?>
+    <!-- $sp_add=[$id_sanpham,$img,$ten_sp,$gia_sp,$gia_cu,$soluong,$thanhtien]; -->
+    <tr>
+    <th><?= $i ?></th>
+    <th><img src="img/<?= $giohang[1] ?>" alt="" width="150px" height="150px"></th>
+    <th><?= $giohang[2] ?></th>
+    <th><?= number_format($giohang[3]) ?> VNĐ</th>
+    <th><?= number_format($giohang[4]) ?> VNĐ</th>
+    <th><?= $giohang[5] ?></th>
+    <th><?= number_format($giohang[6]) ?> VNĐ</th>
+    <th><a href="index.php?act=xoa_giohang&id_cart=<?= $j ?>" onclick="return confirm('Bạn có muốn xóa')">Xóa</a></th>
+    <th><a href="" onclick='return prompt("Mời nhập số lượng cần sửa")'>Sửa số lượng</a></th>
+  </tr>
+  <?php $i++; $j+=1;} ?>
+  <tr class="total-row">
       <td colspan="7"><h3>Tổng tiền :</h3></td>
       <td><h3><?= number_format($tongtien) ?> VNĐ</h3></td>
     </tr>
-  <?php }  $_SESSION['tongtien']=$tongtien;?>
-</table>
+</table>  
 
 <div class="muahang">
   <button><a href="index.php">Tiếp tục mua hàng</a></button>

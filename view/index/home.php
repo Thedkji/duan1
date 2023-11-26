@@ -149,13 +149,13 @@
                             <form action="index.php?act=add_giohang" method="post">
                             <div class="product-img">
                                 <a href="index.php?act=chitietsanpham&idsp=' . $id_sanpham . '&iddm=' . $id_danhmuc . '"><img src="img/' . $img . '" alt="" ></a>    
-                                <div class="product-action d-flex justify-content-between">
-                                    <input type="hidden" name="img" value="' . $img . '">
+                                <div class="product-action d-flex justify-content-between">      
                                     <input type="hidden" name="id_sanpham" value="' . $id_sanpham . '">
+                                    <input type="hidden" name="img" value="' . $img . '">
                                     <input type="hidden" name="ten_sp" value="' . $ten_sp . '">
                                     <input type="hidden" name="gia_sp" value="' . $gia_sp . '">
                                     <input type="hidden" name="giacu" value="' . $giacu . '">
-                                    <a class="product-btn" href=""><input type="submit" name = "add_giohang" value="Add to Cart" style="width: 211px;background-color:#CEA759"></a>
+                                    <a class="product-btn" href=""><input type="submit" name = "add_giohang" value="Thêm vào giỏ" style="width: 211px;background-color:#CEA759"></a>
                                 </div>
                              </div>
                             <div class="product-content">

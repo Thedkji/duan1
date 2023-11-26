@@ -1,15 +1,15 @@
 <?php
-function taodonhang($tong_donhang,$diachi,$tel,$email,$phuongthuc_tt,$madh){
-    $sql="insert into donhang (tong_donhang,diachi,tel,email,phuongthuc_tt,madh) value ($tong_donhang,'$diachi',$tel,'$email',$phuongthuc_tt,'$madh')";
-    pdo_execute($sql);
-    $last_id=pdo_get_connection()->lastInsertId();
-    return $last_id;
+function taodonhang($hoten,$diachi,$tel,$email,$tong_donhang,$phuongthuc_tt,$ngay_dathang){
+    $sql="insert into donhang_chitiet (hoten,diachi,tel,email,tong_donhang,phuongthuc_tt,ngay_dathang) value ('$hoten','$diachi',$tel,'$email',$tong_donhang,$phuongthuc_tt,'$ngay_dathang')";
+    $id_donhangct = pdo_execute_last_insert_id($sql);
+    return $id_donhangct;
 }
-function addtocart($iddh,$id_sanpham,$img,$ten_sp,$gia_sp,$soluong){
-    $sql="insert into donhang_chitiet (id_donhang,id_sanpham,img,ten_sp,don_gia,soluong) value ($iddh,$id_sanpham,'$img','$ten_sp',$gia_sp,$soluong)";
+function insert_giohang($id_user,$id_sanpham,$img,$ten_sp,$gia_sp,$soluong,$thanhtien,$id_donhangct){
+    $sql="insert into donhang (id_user,id_sanpham,img,ten_sp,gia_sp,soluong,thanhtien,id_donhangct) value ($id_user,$id_sanpham,'$img','$ten_sp',$gia_sp,$soluong,$thanhtien,$id_donhangct)";
     pdo_execute($sql);
     return $sql;
 }
+<<<<<<< HEAD
 function load_all_donhang(){
     $sql="select * from donhang order by id_donhang desc";
     $listdonhang = pdo_query($sql);
@@ -18,5 +18,12 @@ function load_all_donhang(){
 function delete_donhang($id_donhang){
     $sql="delete from donhang where id_donhang=$id_donhang ";
     pdo_execute($sql);
+=======
+
+function loadone_donhangct($id_donhangct){
+    $sql='select * from donhang_chitiet where id_donhangct='.$id_donhangct;
+    $load_onesp = pdo_query_one($sql);
+    return $load_onesp;
+>>>>>>> 0cb928f (Quang update giohang/thanhtoan 26/11/2023)
 }
 ?>

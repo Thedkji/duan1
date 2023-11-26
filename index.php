@@ -111,82 +111,78 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
          break;
 
       case "add_giohang":
-         $tongtien="";
          if (isset($_POST['add_giohang']) && $_POST['add_giohang']) {
-           
-            $img = $_POST['img'];
             $id_sanpham = $_POST['id_sanpham'];
+            $img = $_POST['img'];
             $ten_sp = $_POST['ten_sp'];
             $gia_sp = $_POST['gia_sp'];
             $giacu = $_POST['giacu'];
-            if(isset($_POST['sl']) &&($_POST['sl'])>0){
+
+            $soluong = 1; // Số lượng mặc định khi thêm vào giỏ hàng
+            $thanhtien = $soluong * $gia_sp;
+            $sp_add = [$id_sanpham, $img, $ten_sp, $gia_sp, $giacu, $soluong, $thanhtien];
+
+            if (isset($_POST['sl']) && ($_POST['sl']) > 0) {
                $soluong = $_POST['sl'];
-            }else{
-               $soluong = 1;
             }
-            $fg = 0;
-            //kiểm tra sản phẩm xem có tồn tại trong giỏ hàng ko nếu có cập nhật lại số lượng
-            $i = 0;
-            foreach ($_SESSION['giohang'] as $item) {
-               if ($item[2] == $ten_sp) {
-                  $slnew = $soluong + $item[5];
-                  $_SESSION['giohang'][$i][5] = $slnew;
-                  $fg = 1;
+
+            $found = false; // Biến kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
+            foreach ($_SESSION['giohang'] as &$item) {
+               if ($item[2] == $ten_sp) { // Kiểm tra tên sản phẩm
+                  $soluong += $item[5]; // Tăng số lượng của sản phẩm đã có trong giỏ hàng
+                  $thanhtien = $soluong * $gia_sp; // Tính lại tổng tiền dựa trên số lượng mới
+                  $item[5] = $soluong; // Cập nhật số lượng mới vào giỏ hàng
+                  $item[6] = $thanhtien; // Cập nhật tổng tiền mới
+                  $found = true; // Đã tìm thấy sản phẩm trong giỏ hàng
                   break;
                }
-               $i++;
             }
-            //Khởi tạo 1 mảng con trc khi đưa vào giỏ
-            if ($fg == 0) {
-               $item = array($id_sanpham, $img, $ten_sp, $gia_sp, $giacu, $soluong);
-               $_SESSION['giohang'][] = $item;
+
+            if (!$found) { // Nếu sản phẩm chưa tồn tại trong giỏ hàng, thêm mới vào
+               $sp_add[5] = $soluong; // Cập nhật số lượng cho sản phẩm mới
+               $sp_add[6] = $soluong * $gia_sp; // Cập nhật tổng tiền cho sản phẩm mới
+               $_SESSION['giohang'][] = $sp_add; // Thêm sản phẩm mới vào giỏ hàng
             }
-            // unset($_SESSION['giohang']);
-            
          }
          include "view/giohang/view_giohang.php";
          break;
 
+
+
+
       case 'xoa_giohang':
-         if(isset($_GET['i'])&& $_GET['i']>=0){
-            if(isset($_SESSION['giohang'])&& (count($_SESSION['giohang'])>=0))
-            array_splice($_SESSION['giohang'],$_GET['i'],1) ;//thứ tự : mảng , vị trí xóa , số lượng xóa
-         }else{
-            if (isset($_SESSION['giohang'])) {
-               unset($_SESSION['giohang']);
-            }
+         if (isset($_GET['id_cart'])) {
+            array_splice($_SESSION['giohang'], $_GET['id_cart'], 1); //vị trí đầu là mảng , vị trí 2 vị trí cần xóa , vị trí 3 xóa mấy phần tử
+         } else {
+            $_SESSION['giohang'] = [];
          }
-        
-         if(isset($_SESSION['giohang'])&& (count($_SESSION['giohang'])>=0)){
-            header('location:index.php?act=add_giohang');
-         }else {
-            header('location:index.php');
-         }
-      
-         # code...
+         header('location:index.php?act=add_giohang');
          break;
-      
+
+      // case 'thanhtoan':
+      //    include "view/thanhtoan/thanhtoan.php";
+      //    break;
+
       case 'thanhtoan':
-         if(isset($_POST['btn-thanhtoan'])&&($_POST['btn-thanhtoan'])){
-            //lấy dữ liệu thanh toán
-            $tongtien=$_POST['tongtien'];
-            $diachi=$_POST['diachi'];
-            $tel=$_POST['tel'];
-            $email=$_POST['email'];
-            $phuongthuc_tt=$_POST['phuongthuc_tt'];
-            $madh="MQP".rand(0,9999);
-            //tạo đơn hàng và trả về 1 id đơn hàng
-            // $item = array($id_sanpham, $img, $ten_sp, $gia_sp, $giacu, $soluong);
-            $iddh=taodonhang($tongtien,$diachi,$tel,$email,$phuongthuc_tt,$madh);
-            if(isset($_SESSION['giohang'])&& (count($_SESSION['giohang'])>=0)){
-              foreach ($_SESSION['giohang'] as $item) { 
-                  addtocart($iddh,$item[0],$item[1],$item[2],$item[3],$item[5]);
-              } 
-              unset($_SESSION['giohang']);
-              header("location:index.php?act=add_giohang");
+         if (isset($_POST['thanhtoan']) && ($_POST['thanhtoan'])) {
+            $hoten = $_POST['hoten'];
+            $diachi = $_POST['diachi'];
+            $tel = $_POST['tel'];
+            $email = $_POST['email'];
+            $ngay_dathang = date('Y-m-d h:m:s');
+            $tong_donhang = $_SESSION['tongtien'];
+            $phuongthuc_tt = $_POST['phuongthuc_tt'];
+            $id_donhangct = taodonhang($hoten, $diachi, $tel, $email, $tong_donhang, $phuongthuc_tt, $ngay_dathang);
+
+            //insert đơn hàng :$_SESSION['giohang'] & id_donhangct
+            foreach ($_SESSION['giohang'] as $giohang) {
+               // $sp_add = [$id_sanpham, $img, $ten_sp, $gia_sp, $giacu, $soluong, $thanhtien];
+               insert_giohang($_SESSION['user']['id_user'], $giohang[0], $giohang[1], $giohang[2], $giohang[3], $giohang[5],$giohang[6],$id_donhangct);
             }
             
+            $list_donhangct = loadone_donhangct($id_donhangct);
          }
+        
          include "view/thanhtoan/thanhtoan.php";
          break;
    }

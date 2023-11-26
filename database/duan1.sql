@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 22, 2023 lúc 10:20 AM
+-- Thời gian đã tạo: Th10 26, 2023 lúc 04:47 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -71,16 +71,22 @@ INSERT INTO `danhmuc` (`id_danhmuc`, `ten_danhmuc`) VALUES
 CREATE TABLE `donhang` (
   `id_donhang` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `madh` varchar(20) NOT NULL,
-  `phuongthuc_tt` int(11) NOT NULL,
-  `tong_donhang` int(11) NOT NULL,
-  `hoten` varchar(50) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `tel` varchar(20) NOT NULL,
-  `diachi` varchar(150) NOT NULL,
-  `ngay_dathang` date NOT NULL,
-  `ngay_nhanhang` date NOT NULL
+  `id_sanpham` int(11) NOT NULL,
+  `ten_sp` varchar(255) NOT NULL,
+  `img` varchar(255) NOT NULL,
+  `gia_sp` int(11) NOT NULL,
+  `soluong` int(11) NOT NULL,
+  `thanhtien` int(11) NOT NULL,
+  `id_donhangct` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `donhang`
+--
+
+INSERT INTO `donhang` (`id_donhang`, `id_user`, `id_sanpham`, `ten_sp`, `img`, `gia_sp`, `soluong`, `thanhtien`, `id_donhangct`) VALUES
+(33, 4, 10, 'Cơm Lứt Cháy (500g)', '00-31.jpg', 35000, 3, 105000, 75),
+(34, 4, 11, 'Chà Bông Sợi Chay Loại 500g', '00-27.jpg', 200000, 4, 800000, 75);
 
 -- --------------------------------------------------------
 
@@ -89,14 +95,23 @@ CREATE TABLE `donhang` (
 --
 
 CREATE TABLE `donhang_chitiet` (
-  `id_ctdh` int(11) NOT NULL,
-  `id_sanpham` int(11) NOT NULL,
-  `id_donhang` int(11) NOT NULL,
-  `soluong` int(11) NOT NULL,
-  `don_gia` int(11) NOT NULL,
-  `ten_sp` varchar(255) NOT NULL,
-  `img` varchar(255) NOT NULL
+  `id_donhangct` int(11) NOT NULL,
+  `phuongthuc_tt` int(11) NOT NULL,
+  `tong_donhang` int(11) NOT NULL,
+  `hoten` varchar(50) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `tel` varchar(20) NOT NULL,
+  `diachi` varchar(150) NOT NULL,
+  `ngay_dathang` datetime NOT NULL,
+  `trangthai` int(11) NOT NULL COMMENT '0 đơn hàng mới 1 đang xử lý 2 đang giao 3 đã giao'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `donhang_chitiet`
+--
+
+INSERT INTO `donhang_chitiet` (`id_donhangct`, `phuongthuc_tt`, `tong_donhang`, `hoten`, `email`, `tel`, `diachi`, `ngay_dathang`, `trangthai`) VALUES
+(75, 2, 905000, 'Quang', '123@gmail.com', '123213', 'ádnáhdá', '2023-11-26 04:11:47', 0);
 
 -- --------------------------------------------------------
 
@@ -182,7 +197,7 @@ ALTER TABLE `donhang`
 -- Chỉ mục cho bảng `donhang_chitiet`
 --
 ALTER TABLE `donhang_chitiet`
-  ADD PRIMARY KEY (`id_ctdh`);
+  ADD PRIMARY KEY (`id_donhangct`);
 
 --
 -- Chỉ mục cho bảng `sanpham`
@@ -216,13 +231,13 @@ ALTER TABLE `danhmuc`
 -- AUTO_INCREMENT cho bảng `donhang`
 --
 ALTER TABLE `donhang`
-  MODIFY `id_donhang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_donhang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT cho bảng `donhang_chitiet`
 --
 ALTER TABLE `donhang_chitiet`
-  MODIFY `id_ctdh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_donhangct` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT cho bảng `sanpham`
