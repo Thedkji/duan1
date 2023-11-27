@@ -1,6 +1,6 @@
 <?php
-function taodonhang($hoten,$diachi,$tel,$email,$tong_donhang,$phuongthuc_tt,$ngay_dathang){
-    $sql="insert into donhang_chitiet (hoten,diachi,tel,email,tong_donhang,phuongthuc_tt,ngay_dathang) value ('$hoten','$diachi',$tel,'$email',$tong_donhang,$phuongthuc_tt,'$ngay_dathang')";
+function taodonhang($hoten,$diachi,$tel,$email,$tong_donhang,$phuongthuc_tt,$ngay_dathang,$madh){
+    $sql="insert into donhang_chitiet (hoten,diachi,tel,email,tong_donhang,phuongthuc_tt,ngay_dathang,madh) value ('$hoten','$diachi',$tel,'$email',$tong_donhang,$phuongthuc_tt,'$ngay_dathang','$madh')";
     $id_donhangct = pdo_execute_last_insert_id($sql);
     return $id_donhangct;
 }
@@ -9,7 +9,7 @@ function insert_giohang($id_user,$id_sanpham,$img,$ten_sp,$gia_sp,$soluong,$than
     pdo_execute($sql);
     return $sql;
 }
-<<<<<<< HEAD
+
 function load_all_donhang(){
     $sql="select * from donhang order by id_donhang desc";
     $listdonhang = pdo_query($sql);
@@ -18,12 +18,19 @@ function load_all_donhang(){
 function delete_donhang($id_donhang){
     $sql="delete from donhang where id_donhang=$id_donhang ";
     pdo_execute($sql);
-=======
+}
 
 function loadone_donhangct($id_donhangct){
     $sql='select * from donhang_chitiet where id_donhangct='.$id_donhangct;
     $load_onesp = pdo_query_one($sql);
     return $load_onesp;
->>>>>>> 0cb928f (Quang update giohang/thanhtoan 26/11/2023)
+
+}
+
+function loadone_donhang($id_donhang){
+    $sql='select * from donhang where id_donhang='.$id_donhang;
+    $load_onesp = pdo_query_one($sql);
+    return $load_onesp;
+
 }
 ?>
