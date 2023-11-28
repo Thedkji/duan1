@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 26, 2023 lúc 04:47 PM
+-- Thời gian đã tạo: Th10 28, 2023 lúc 03:30 AM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -85,8 +85,20 @@ CREATE TABLE `donhang` (
 --
 
 INSERT INTO `donhang` (`id_donhang`, `id_user`, `id_sanpham`, `ten_sp`, `img`, `gia_sp`, `soluong`, `thanhtien`, `id_donhangct`) VALUES
-(33, 4, 10, 'Cơm Lứt Cháy (500g)', '00-31.jpg', 35000, 3, 105000, 75),
-(34, 4, 11, 'Chà Bông Sợi Chay Loại 500g', '00-27.jpg', 200000, 4, 800000, 75);
+(1, 4, 12, 'Chà Là Quả Rời Loại (500g)', '00-52-scaled.jpg', 45000, 1, 45000, 83),
+(2, 4, 11, 'Chà Bông Sợi Chay Loại 500g', '00-27.jpg', 200000, 1, 200000, 83),
+(3, 4, 12, 'Chà Là Quả Rời Loại (500g)', '00-52-scaled.jpg', 45000, 1, 45000, 84),
+(4, 4, 11, 'Chà Bông Sợi Chay Loại 500g', '00-27.jpg', 200000, 1, 200000, 84),
+(5, 4, 12, 'Chà Là Quả Rời Loại (500g)', '00-52-scaled.jpg', 45000, 1, 45000, 85),
+(6, 4, 10, 'Cơm Lứt Cháy (500g)', '00-31.jpg', 35000, 2, 70000, 86),
+(7, 4, 7, 'Rong Biển Lá Kim(16 gói)', '8809060470219-1.jpg', 85000, 1, 85000, 86),
+(8, 4, 10, 'Cơm Lứt Cháy (500g)', '00-31.jpg', 35000, 1, 35000, 87),
+(9, 4, 11, 'Chà Bông Sợi Chay Loại 500g', '00-27.jpg', 200000, 1, 200000, 87),
+(10, 4, 11, 'Chà Bông Sợi Chay Loại 500g', '00-27.jpg', 200000, 1, 200000, 88),
+(11, 4, 11, 'Chà Bông Sợi Chay Loại 500g', '00-27.jpg', 200000, 2, 400000, 89),
+(12, 0, 12, 'Chà Là Quả Rời Loại (500g)', '00-52-scaled.jpg', 45000, 1, 45000, 91),
+(13, 0, 11, 'Chà Bông Sợi Chay Loại 500g', '00-27.jpg', 200000, 1, 200000, 91),
+(14, 0, 4, 'Viên Chanh Xù Chay,200g', '8936072930261-0.jpg', 45000, 7, 315000, 92);
 
 -- --------------------------------------------------------
 
@@ -97,6 +109,7 @@ INSERT INTO `donhang` (`id_donhang`, `id_user`, `id_sanpham`, `ten_sp`, `img`, `
 CREATE TABLE `donhang_chitiet` (
   `id_donhangct` int(11) NOT NULL,
   `phuongthuc_tt` int(11) NOT NULL,
+  `madh` varchar(255) NOT NULL,
   `tong_donhang` int(11) NOT NULL,
   `hoten` varchar(50) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -110,8 +123,18 @@ CREATE TABLE `donhang_chitiet` (
 -- Đang đổ dữ liệu cho bảng `donhang_chitiet`
 --
 
-INSERT INTO `donhang_chitiet` (`id_donhangct`, `phuongthuc_tt`, `tong_donhang`, `hoten`, `email`, `tel`, `diachi`, `ngay_dathang`, `trangthai`) VALUES
-(75, 2, 905000, 'Quang', '123@gmail.com', '123213', 'ádnáhdá', '2023-11-26 04:11:47', 0);
+INSERT INTO `donhang_chitiet` (`id_donhangct`, `phuongthuc_tt`, `madh`, `tong_donhang`, `hoten`, `email`, `tel`, `diachi`, `ngay_dathang`, `trangthai`) VALUES
+(83, 1, 'TA27411', 245000, '123', '123@gmail.com', '1232131231', '0', '2023-11-27 10:11:17', 0),
+(84, 1, 'TA56418', 245000, '123', '123@gmail.com', '1232131231', '0', '2023-11-27 10:11:38', 0),
+(85, 4, 'TA19139', 45000, 'av', '123@gmail.com', '1232131231', '0', '2023-11-27 10:11:58', 0),
+(86, 3, 'TA30727', 155000, 'quang11', '123@gmail.com', '1232131231', '0', '2023-11-27 10:11:07', 0),
+(87, 4, 'TA61385', 235000, 'av', '123@gmail.com', '1232131231', '0', '2023-11-27 02:11:03', 0),
+(88, 1, 'TA83427', 200000, 'av123', '123@gmail.com', '1232131231', '0', '2023-11-27 02:11:56', 0),
+(89, 1, 'TA20379', 400000, '1234', '123@gmail.com', '1232131231', '0', '2023-11-27 02:11:02', 0),
+(90, 2, 'TA50692', 245000, 'hádhád', 'nguyenminhquang2207@gmail.com', '1232131231', 'áđá', '2023-11-27 02:11:24', 0),
+(91, 2, 'TA31243', 245000, 'hádhád', 'nguyenminhquang2207@gmail.com', '1232131231', 'áđá', '2023-11-27 02:11:04', 0),
+(92, 2, 'TA44860', 315000, 'hádhád', 'nguyenminhquang2207@gmail.com', '1232131231', 'áđá', '2023-11-27 02:11:11', 0),
+(93, 1, 'TA72278', 315000, 'hádhád', 'nguyenminhquang2207@gmail.com', '1232131231', 'áđá', '2023-11-27 02:11:47', 0);
 
 -- --------------------------------------------------------
 
@@ -231,13 +254,13 @@ ALTER TABLE `danhmuc`
 -- AUTO_INCREMENT cho bảng `donhang`
 --
 ALTER TABLE `donhang`
-  MODIFY `id_donhang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_donhang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT cho bảng `donhang_chitiet`
 --
 ALTER TABLE `donhang_chitiet`
-  MODIFY `id_donhangct` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id_donhangct` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT cho bảng `sanpham`
