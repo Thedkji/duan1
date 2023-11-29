@@ -171,8 +171,6 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             $tong_donhang = $_SESSION['tongtien'];
             $phuongthuc_tt = $_POST['phuongthuc_tt'];
             $madh='TA'.rand(10000,99999);
-            $id_donhangct = taodonhang($hoten, $diachi, $tel, $email, $tong_donhang, $phuongthuc_tt, $ngay_dathang,$madh);
-            $_SESSION['donhangct']=$id_donhangct;
             //insert đơn hàng :$_SESSION['giohang'] & id_donhangct
             foreach ($_SESSION['giohang'] as $giohang) {
                // $sp_add = [$id_sanpham, $img, $ten_sp, $gia_sp, $giacu, $soluong, $thanhtien];
@@ -183,8 +181,11 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                }else{
                   $id_user=0;
                }
+               $id_donhangct = taodonhang($id_user,$hoten, $diachi, $tel, $email, $tong_donhang, $phuongthuc_tt, $ngay_dathang,$madh);
+               $_SESSION['donhangct']=$id_donhangct;
                insert_giohang($id_user, $giohang[0], $giohang[1], $giohang[2], $giohang[3], $giohang[5],$giohang[6],$id_donhangct);
             }
+           
             header('location:index.php?act=thanhtoantc');
          }
         

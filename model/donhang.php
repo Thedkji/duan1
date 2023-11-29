@@ -1,6 +1,6 @@
 <?php
-function taodonhang($hoten,$diachi,$tel,$email,$tong_donhang,$phuongthuc_tt,$ngay_dathang,$madh){
-    $sql="insert into donhang_chitiet (hoten,diachi,tel,email,tong_donhang,phuongthuc_tt,ngay_dathang,madh) value ('$hoten','$diachi',$tel,'$email',$tong_donhang,$phuongthuc_tt,'$ngay_dathang','$madh')";
+function taodonhang($id_user,$hoten,$diachi,$tel,$email,$tong_donhang,$phuongthuc_tt,$ngay_dathang,$madh){
+    $sql="insert into donhang_chitiet (id_user,hoten,diachi,tel,email,tong_donhang,phuongthuc_tt,ngay_dathang,madh) value ($id_user,'$hoten','$diachi',$tel,'$email',$tong_donhang,$phuongthuc_tt,'$ngay_dathang','$madh')";
     $id_donhangct = pdo_execute_last_insert_id($sql);
     return $id_donhangct;
 }
