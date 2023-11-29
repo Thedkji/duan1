@@ -134,8 +134,13 @@ if (isset($_GET['act'])) {
             include('public/taikhoan.php');
             break;
         case 'donhang':
-            
-            $listdonhang=load_all_donhang();
+            if(isset($_POST['kyw'])&&($_POST['kyw']!="")){
+                $kyw=$_POST['kyw'];
+
+            }else{
+                $kyw="";
+            }
+            $listdonhang=load_all_donhang($kyw,0);
             include('public/donhang.php');
             break;
         case 'xoadonhang':
@@ -146,6 +151,40 @@ if (isset($_GET['act'])) {
             $listdonhang=load_all_donhang();
             include('public/donhang.php');
             break;
+        
+        case 'donhangct':
+            if (isset($_GET['id_donhangct']) && $_GET['id_donhangct'] > 0) {
+                $id_donhangct = $_GET['id_donhangct'];
+                $listdhct = loadone_donhangct($id_donhangct);
+                
+                // Kiểm tra xem có dữ liệu không trước khi include file
+                if ($listdhct) {
+                    include('public/donhangct.php'); // Nơi hiển thị thông tin đơn hàng chi tiết
+                } else {
+                    echo "Không tìm thấy đơn hàng."; // Hoặc xử lý thông báo nếu không tìm thấy đơn hàng
+                }
+            }      
+            break;      
+            case 'update_donhangct':
+                if (isset($_GET['id_donhangct']) && $_GET['id_donhangct'] > 0) {
+                    $id_donhangct = $_GET['id_donhangct'];
+                    $donhangct = loadone_donhangct($id_donhangct);
+            
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['trangthai'])) {
+                        $trangthai = $_POST['trangthai'];
+            
+                        // Thực hiện cập nhật trạng thái đơn hàng trong cơ sở dữ liệu
+                        update_donhangct($id_donhangct, $trangthai);
+                        // Chuyển hướng hoặc thực hiện hành động tiếp theo sau khi cập nhật
+            
+                        // Ví dụ: chuyển hướng người dùng sau khi cập nhật
+                        header('Location: index.php?act=donhangct&id_donhangct='.$id_donhangct);
+                        exit(); // Kết thúc quá trình thực thi để tránh tiếp tục chạy mã
+                    }
+                }
+                include('public/update_donhangct.php');
+                break;
+            
         default:
             include('public/404.php');
     }

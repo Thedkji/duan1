@@ -173,7 +173,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             $tong_donhang = $_SESSION['tongtien'];
             $phuongthuc_tt = $_POST['phuongthuc_tt'];
             $id_donhangct = taodonhang($hoten, $diachi, $tel, $email, $tong_donhang, $phuongthuc_tt, $ngay_dathang);
-
+            $_SESSION['id_donhangct']=$id_donhangct;
             //insert đơn hàng :$_SESSION['giohang'] & id_donhangct
             foreach ($_SESSION['giohang'] as $giohang) {
                // $sp_add = [$id_sanpham, $img, $ten_sp, $gia_sp, $giacu, $soluong, $thanhtien];

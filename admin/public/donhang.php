@@ -10,7 +10,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Đơn hàng</li>
+                        <li class="breadcrumb-item active"><a href="index.php?act=donhang">Đơn hàng</a></li>
                     </ol>
                 </div>
             </div>
@@ -21,23 +21,34 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
+            <div class="modal-footer justify-content-between">
+                                    <a href="index.php?act=donhang"><button type="button" class="btn btn-primary">Tất cả đơn hàng
+                                            </button></a>
+                                </div> 
                 <div class="col-12">
                     <div class="card">
                         
                         <div class="card-body">
-                            <table id="example1" class="table table-bordered table-striped">
+                            <table id="example1" class="table table-bordered table-striped"style="text-align:center;">
                                 <thead>
+                                <form action="index.php?act=donhang" method="POST">
+                                <input type="text" name="kyw" id="" placeholder="Tìm kiếm id user......" style="width: 300px; ">
+                                        <button style="color:black; width: 50px; background:#00FFFF;"><i class="ion-ios-search-strong" ></i></button>
+                                </form>
                                     <tr>
-                                        <th scope="col">ID Đơn hàng</th>
-                                        <th scope="col">ID User</th>
-                                        <th scope="col">Mã đơn hàng</th>
-                                        <th scope="col">Phương thức thanh toán</th>
-                                        <th scope="col">Tổng đơn hàng</th>
-                                        <th scope="col">Họ tên</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Điện Thoại</th>
-                                        <th scope="col">Địa chỉ</th>
-                                        <th scope="col">Ngày đặt hàng</th>                                        
+                                        <th scope="col">ID đơn hàng</th>
+                                        <th scope="col">ID user</th>
+                                        <th scope="col">ID sản phẩm</th>
+                                        <th scope="col">Tên sản phẩm</th>
+                                        <th scope="col">Image</th>
+                                        <th scope="col">Gía sản phẩm</th>
+                                        <th scope="col">Số lượng</th>
+                                        <th scope="col">Thành tiền</th>
+                                        <th scope="col">ID đơn hàng chi tiết</th>
+                                        <th scope="col">Quản lý</th>
+                                        <th scope="col">Thao tác</th>
+
+                                                                               
                                     </tr>
                                 </thead>
                                  <?php foreach ($listdonhang as $listdh) {
@@ -51,14 +62,14 @@
                                         <tr>
                                             <th scope="col"><?= $id_donhang ?></th>
                                             <th scope="col"><?= $id_user ?></th>
-                                            <th scope="col"><?= $madh ?></th>
-                                            <th scope="col"><?= $phuongthuc_tt ?></th>
-                                            <th scope="col"><?= $tong_donhang ?></th>
-                                            <th scope="col"><?= $hoten ?></th>
-                                            <th scope="col"><?= $email ?></th>
-                                            <th scope="col"><?= $tel ?></th>
-                                            <th scope="col"><?= $diachi ?></th>
-                                            <th scope="col"><?= $ngay_dathang=date('h:i:sa d/m/Y') ?></th>
+                                            <th scope="col"><?= $id_sanpham ?></th>
+                                            <th scope="col"><?= $ten_sp ?></th>
+                                            <th scope="col"><img src="../img/<?= $img ?>" alt="" width="100px"></th>
+                                            <th scope="col"><?= number_format($gia_sp) ?><span> VNĐ<span></th>
+                                            <th scope="col"><?= $soluong ?></th>
+                                            <th scope="col"><?= number_format($thanhtien) ?><span> VNĐ<span></th>
+                                            <th scope="col"><?= $id_donhangct ?></th>
+                                            <th scope="col"><a href="index.php?act=donhangct&id_donhangct=<?= $id_donhangct ?>">Chi tiết đơn hàng</a></th>
                                             <th><a href="<?= $xoa_donhang ?>"
                                                 onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"><input
                                                     type="button" value="Xóa"></a></th>

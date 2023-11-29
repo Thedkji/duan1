@@ -55,7 +55,7 @@
                                 </ul>
                                 <?php }else{?>
                                     <ul class="ht-us-menu d-flex">
-                                    <li><a href="index.php?act=dangnhap"><i class="fa fa-user-circle-o"></i>Tài khoản</a>
+                                    <li><a href=""><i class="fa fa-user-circle-o"></i>Tài khoản</a>
                                         <ul class="ht-dropdown right">
                                             <!-- <li><a href="compare.html">Compare Products</a></li> -->
                                             <li><a href="index.php?act=dangnhap">Đăng nhập</a></li>

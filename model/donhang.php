@@ -9,21 +9,62 @@ function insert_giohang($id_user,$id_sanpham,$img,$ten_sp,$gia_sp,$soluong,$than
     pdo_execute($sql);
     return $sql;
 }
-<<<<<<< HEAD
-function load_all_donhang(){
-    $sql="select * from donhang order by id_donhang desc";
+function load_all_donhang($kyw="",$id_user=0){
+    $sql="select * from donhang where 1";
+    if($id_user>0) $sql.=" AND id_user=".$id_user;
+    if($kyw!="") $sql.=" AND id_user like '%".$kyw."%'";
+    $sql.=" order by id_donhang desc";
     $listdonhang = pdo_query($sql);
     return $listdonhang;
 }
 function delete_donhang($id_donhang){
-    $sql="delete from donhang where id_donhang=$id_donhang ";
+    $sql="DELETE donhang, donhang_chitiet FROM donhang
+    LEFT JOIN donhang_chitiet ON donhang.id_donhangct = donhang_chitiet.id_donhangct
+    WHERE donhang.id_donhang =$id_donhang";
     pdo_execute($sql);
-=======
-
+}
+function loadall_donhangct(){
+    $sql='select * from donhang_chitiet order by id_donhangct desc  ';
+    $load_allctsp = pdo_query($sql);
+    return $load_allctsp;
+}
 function loadone_donhangct($id_donhangct){
-    $sql='select * from donhang_chitiet where id_donhangct='.$id_donhangct;
+    $sql="select * from donhang_chitiet where id_donhangct=$id_donhangct";
     $load_onesp = pdo_query_one($sql);
     return $load_onesp;
->>>>>>> 0cb928f (Quang update giohang/thanhtoan 26/11/2023)
+}
+function update_donhangct($id_donhangct, $trangthai) {
+    $sql = "UPDATE donhang_chitiet SET trangthai='".$trangthai."' WHERE id_donhangct=$id_donhangct";
+    
+    // Chuẩn bị và thực thi truy vấn
+    
+    pdo_execute($sql);
+}
+
+
+function get_ttdh($n){
+    switch ($n) {
+        case '0':
+            # code...
+            $tt="Đơn hàng mới";
+            break;
+        case '1':
+                # code...
+            $tt="Đang xử lý";
+            break;
+        case '2':
+                    # code...
+            $tt="Đang giao hàng";
+            break;
+        case '3':
+                        # code...
+             $tt="Hoàn tất";
+            break;
+        default:
+            # code...
+            $tt="Đơn hàng mới";
+            break;
+    }
+    return $tt;
 }
 ?>

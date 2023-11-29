@@ -29,7 +29,7 @@
                     <div class="card">
                         
                         <div class="card-body">
-                            <table id="example1" class="table table-bordered table-striped">
+                            <table id="example1" class="table table-bordered table-striped"style="text-align:center;">
                                 <thead>
                                     <tr>
                                         <th scope="col">ID Sản phẩm</th>
