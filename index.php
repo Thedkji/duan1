@@ -20,7 +20,7 @@ $topsale = loadall_sanpham_topsale();
 $spnew = loadall_sanpham_home();
 $hangmoi = loadall_sanpham_hangmoi();
 $hangmoict = loadall_sanpham_hangmoict();
-
+$_SESSION['donhang']= load_all_donhang();
 if (isset($_GET['act']) && $_GET['act'] != "") {
    $act = $_GET['act'];
    switch ($act) {
@@ -159,33 +159,46 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
          header('location:index.php?act=add_giohang');
          break;
 
-      // case 'thanhtoan':
-      //    include "view/thanhtoan/thanhtoan.php";
-      //    break;
+      
 
-      case 'thanhtoan':
-         if (isset($_POST['thanhtoan']) && ($_POST['thanhtoan'])) {
-            $hoten = $_POST['hoten'];
-            $diachi = $_POST['diachi'];
-            $tel = $_POST['tel'];
-            $email = $_POST['email'];
-            $ngay_dathang = date('Y-m-d h:m:s');
-            $tong_donhang = $_SESSION['tongtien'];
-            $phuongthuc_tt = $_POST['phuongthuc_tt'];
-            $id_donhangct = taodonhang($hoten, $diachi, $tel, $email, $tong_donhang, $phuongthuc_tt, $ngay_dathang);
-            $_SESSION['id_donhangct']=$id_donhangct;
-            //insert đơn hàng :$_SESSION['giohang'] & id_donhangct
-            foreach ($_SESSION['giohang'] as $giohang) {
-               // $sp_add = [$id_sanpham, $img, $ten_sp, $gia_sp, $giacu, $soluong, $thanhtien];
-               insert_giohang($_SESSION['user']['id_user'], $giohang[0], $giohang[1], $giohang[2], $giohang[3], $giohang[5],$giohang[6],$id_donhangct);
+         case 'thanhtoan':
+            if (isset($_POST['thanhtoan']) && ($_POST['thanhtoan'])) {
+               $hoten = $_POST['hoten'];
+               $diachi = $_POST['diachi'];
+               $tel = $_POST['tel'];
+               $email = $_POST['email'];
+               $ngay_dathang = date('Y-m-d h:m:s');
+               $tong_donhang = $_SESSION['tongtien'];
+               $phuongthuc_tt = $_POST['phuongthuc_tt'];
+               $madh='TA'.rand(10000,99999);
+               if(isset($_SESSION['user'])){
+                  $id_user=$_SESSION['user']['id_user'] ;
+               }else{
+                  $id_user=0;
+               }
+               $id_donhangct = taodonhang($id_user,$hoten, $diachi, $tel, $email, $tong_donhang, $phuongthuc_tt, $ngay_dathang,$madh);
+               $_SESSION['donhangct']=$id_donhangct;
+               //insert đơn hàng :$_SESSION['giohang'] & id_donhangct
+               foreach ($_SESSION['giohang'] as $giohang) {
+                  // $sp_add = [$id_sanpham, $img, $ten_sp, $gia_sp, $giacu, $soluong, $thanhtien];
+                  //tk tồn tại thì lấy id ngược lại =0               
+                  insert_giohang($id_user, $giohang[0], $giohang[1], $giohang[2], $giohang[3], $giohang[5],$giohang[6],$id_donhangct);
+               }
+              
+               header('location:index.php?act=thanhtoantc');
             }
-            
-            $list_donhangct = loadone_donhangct($id_donhangct);
-         }
-        
-         include "view/thanhtoan/thanhtoan.php";
-         break;
+           
+            include "view/thanhtoan/thanhtoan.php";
+            break;
+
+         case 'thanhtoantc':
+            $list_donhangct = loadone_donhangct($_SESSION['donhangct']);
+            include "view/thanhtoan/thanhtoantc.php";
+            //xóa giỏ hàng sau khi đặt thành công
+            $_SESSION['giohang']=[];
+            break;
    }
+   
 
 
 } else {
