@@ -102,7 +102,6 @@
     <th><?= $giohang[5] ?></th>
     <th><?= number_format($giohang[6]) ?> VNĐ</th>
     <th><a href="index.php?act=xoa_giohang&id_cart=<?= $j ?>" onclick="return confirm('Bạn có muốn xóa')">Xóa</a></th>
-    <th><a href="" onclick='return prompt("Mời nhập số lượng cần sửa")'>Sửa số lượng</a></th>
   </tr>
   <?php $i++; $j+=1;} ?>
   <tr class="total-row">

@@ -60,7 +60,7 @@ function pdo_query($sql){
         unset($conn);
     }
 }
-// truy vấn  1 dữ liệu
+// truy vấn  1 dữ liệu  
 function pdo_query_one($sql){
     $sql_args=array_slice(func_get_args(),1);
     try{

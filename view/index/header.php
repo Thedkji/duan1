@@ -47,13 +47,14 @@
                                             if($_SESSION['user']['role'] == 1){
                                             ?>
                                             <li><a href="admin/index.php">Trang quản trị</a></li>
-                                            <?php }?>
+                                            <li><a href="index.php?act=donhangcuatoi&id_user=<?= $_SESSION['user']['id_user']?>">Đơn hàng của tôi</a></li>
+                                            <?php }?> 
                                             <li><a href="index.php?act=dangxuat">Đăng xuất</a></li>
                                             <!-- <li><a href="login-register.html">Sign In</a></li> -->
                                         </ul>
                                     </li>
                                 </ul>
-                                <?php }else{?>
+                                <?php }else{ $id_user=0 ?>
                                     <ul class="ht-us-menu d-flex">
                                     <li><a href=""><i class="fa fa-user-circle-o"></i>Tài khoản</a>
                                         <ul class="ht-dropdown right">
@@ -61,7 +62,7 @@
                                             <li><a href="index.php?act=dangnhap">Đăng nhập</a></li>
                                             <!-- <li><a href="wishlist.html">My Wish List</a></li> -->
                                             <li><a href="index.php?act=dangky">Đăng ký</a></li>
-                                            <li><a href="index.php?act=quenmatkhau">Quên Mật khẩu</a></li>
+                                            <li><a href="index.php?act=donhangcuatoi&id_user=<?= $id_user ?>">Đơn hàng của tôi</a></li>
                                             <!-- <li><a href="login-register.html">Sign In</a></li> -->
                                         </ul>
                                     </li>

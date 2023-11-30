@@ -26,6 +26,7 @@
                     <input type="submit" class="btn" name="dangky" value="đăng ký">
                 </div>
             </form>
+            <p style="color:orangered"><a href="index.php?act=quenmatkhau">Quên mật khẩu ?</p>
     <?php
     if(isset($thongbao)){
         echo $thongbao;

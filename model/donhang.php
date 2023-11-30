@@ -1,6 +1,6 @@
 <?php
-function taodonhang($id_user,$hoten,$diachi,$tel,$email,$tong_donhang,$phuongthuc_tt,$ngay_dathang){
-    $sql="insert into donhang_chitiet (id_user,hoten,diachi,tel,email,tong_donhang,phuongthuc_tt,ngay_dathang) value ($id_user,'$hoten','$diachi',$tel,'$email',$tong_donhang,$phuongthuc_tt,'$ngay_dathang')";
+function taodonhang($id_user,$hoten,$diachi,$tel,$email,$tong_donhang,$phuongthuc_tt,$ngay_dathang,$madh){
+    $sql="insert into donhang_chitiet (id_user,hoten,diachi,tel,email,tong_donhang,phuongthuc_tt,ngay_dathang,madh) value ($id_user,'$hoten','$diachi',$tel,'$email',$tong_donhang,$phuongthuc_tt,'$ngay_dathang','$madh')";
     $id_donhangct = pdo_execute_last_insert_id($sql);
     return $id_donhangct;
 }
@@ -33,6 +33,13 @@ function loadone_donhangct($id_donhangct){
     $load_onesp = pdo_query_one($sql);
     return $load_onesp;
 }
+
+function loadone_donhangct_dh_cuatoi($id_user){
+    $sql="select * from donhang_chitiet where id_user=$id_user";
+    $load_one_dhct = pdo_query_one($sql);
+    return $load_one_dhct;
+}
+
 function update_donhangct($id_donhangct, $trangthai) {
     $sql = "UPDATE donhang_chitiet SET trangthai='".$trangthai."' WHERE id_donhangct=$id_donhangct";
     
