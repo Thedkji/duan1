@@ -174,19 +174,22 @@
     $tongtien+=$giohang[6];
   ?>
     <!-- $sp_add=[$id_sanpham,$img,$ten_sp,$gia_sp,$gia_cu,$soluong,$thanhtien]; -->
+    <form action="" method="post">
     <tr>
-    <th><?= $i ?></th>
-    <th><img src="img/<?= $giohang[1] ?>" alt="" width="100px" height="100px"></th>
-    <th><?= $giohang[2] ?></th>
-    <th><?= number_format($giohang[3]) ?> VNĐ</th>
-    <th><?= $giohang[5] ?></th>
-    <th><?= number_format($giohang[6]) ?> VNĐ</th>
-  </tr>
-  <?php $i++; $j+=1;} ?>
-  <tr class="total-row">
-      <td colspan="5"><h3>Tổng tiền :</h3></td>
-      <td><h3><?= number_format($tongtien) ?> VNĐ</h3></td>
-    </tr>
+        <th style="display: none;"><input type="hidden" value="<?= $giohang[0] ?>" name="id_sanpham"></th>   
+        <th><?= $i ?></th>
+        <th><img src="img/<?= $giohang[1] ?>" alt="" width="100px" height="100px"></th>
+        <th><?= $giohang[2] ?></th>
+        <th><?= number_format($giohang[3]) ?> VNĐ</th>
+        <th><?= $giohang[5] ?></th>
+        <th><?= number_format($giohang[6]) ?> VNĐ</th>
+      </tr>
+      <?php $i++; $j+=1;} ?>
+      <tr class="total-row">
+        <td colspan="5"><h3>Tổng tiền :</h3></td>
+        <td><h3><?= number_format($tongtien) ?> VNĐ</h3></td>
+      </tr>
+    </form>
 </table>  
 
 <div class="muahang">
