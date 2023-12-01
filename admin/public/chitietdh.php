@@ -1,5 +1,5 @@
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper"style="width: 1500px;">
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
@@ -18,7 +18,7 @@
     </section>
 
     <!-- Main content -->
-    <section class="content" style="width: 1500px;">
+    <section class="content" >
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
