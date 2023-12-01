@@ -8,16 +8,17 @@ function loadall_thongke(){
 
 
 
-function loadall_thongke_doanhthu() {
-    // Truy vấn SQL để lấy doanh thu từ cơ sở dữ liệu
-    $sql = "SELECT danhmuc.ten_danhmuc AS tendm,
-                DATE_FORMAT(sanpham., '%Y-%m') AS thang, 
-                   SUM(sanpham.gia_sp) AS total_revenue,
-                   COUNT(sanpham.id_sanpham) AS total_products
-            FROM sanpham
-            INNER JOIN danhmuc ON sanpham.id_danhmuc = danhmuc.id_danhmuc
-            GROUP BY sanpham.id_danhmuc";
-
+function load_thongke_doanhthu()
+{
+    // Truy vấn SQL để lấy doanh thu theo tháng và trạng thái đơn hàng
+    $sql = "SELECT MONTH(ngay_dathang) AS thang, 
+                   SUM(CASE WHEN trangthai = 3 THEN 1 ELSE 0 END) AS da_vanchuyen,
+                   SUM(CASE WHEN trangthai = 0 THEN 1 ELSE 0 END) AS moi,
+                   SUM(tong_donhang) AS total_revenue
+            FROM donhang_chitiet
+            WHERE YEAR(ngay_dathang) = YEAR(CURRENT_DATE())
+            GROUP BY MONTH(ngay_dathang)";
+    
     try {
         $list_thongke_doanhthu = pdo_query($sql);
         return $list_thongke_doanhthu;
@@ -25,6 +26,8 @@ function loadall_thongke_doanhthu() {
         throw $e;
     }
 }
+
+
 ?>
 
 

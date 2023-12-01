@@ -1,24 +1,20 @@
+<a href="index.php?act=thongke"><button style="margin:30px 300px 0px 300px;">Quay lại</button></a>
 <?php
-$list_thongke_doanhthu = loadall_thongke_doanhthu();
-
-// Tạo các mảng để lưu trữ thông tin theo tháng
+$list_thongke_doanhthu = load_thongke_doanhthu();
+// Chuyển dữ liệu doanh thu thành mảng để sử dụng trong biểu đồ
 $labels = [];
-$dataRevenue = [];
-$dataProducts = [];
+$data_revenue = [];
+$data_new_orders = [];
+$data_shipped_orders = [];
 
-// Duyệt qua kết quả trả về từ truy vấn và gom nhóm dữ liệu theo danh mục và tháng
 foreach ($list_thongke_doanhthu as $thongke) {
-    $category = $thongke['tendm'];
-    $month = $thongke['thang'];
-
-    // Tạo label là kết hợp giữa tên danh mục và tháng
-    $labels[] = $category . ' - ' . $month;
-
-    // Lưu doanh thu và số lượng sản phẩm tương ứng
-    $dataRevenue[] = $thongke['total_revenue'];
-    $dataProducts[] = $thongke['total_products'];
+    $labels[] = "Tháng " . $thongke['thang'];
+    $data_revenue[] = $thongke['total_revenue'];
+    $data_new_orders[] = $thongke['moi'];
+    $data_shipped_orders[] = $thongke['da_vanchuyen'];
 }
 ?>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -29,17 +25,17 @@ foreach ($list_thongke_doanhthu as $thongke) {
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            <!-- ... -->
+            <!-- Biểu đồ thống kê doanh thu -->
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <!-- Hiển thị biểu đồ -->
-                            <canvas id="revenueChart" width="400" height="400"></canvas>
+                            <canvas id="revenueChart" width="800" height="400"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- Thêm thông tin thống kê tại đây -->
         </div>
     </section>
     <!-- /.content -->
@@ -56,16 +52,22 @@ foreach ($list_thongke_doanhthu as $thongke) {
             data: {
                 labels: <?= json_encode($labels) ?>,
                 datasets: [{
-                    label: 'Doanh thu theo tháng và danh mục',
-                    data: <?= json_encode($dataRevenue) ?>,
+                    label: 'Doanh thu',
+                    data: <?= json_encode($data_revenue) ?>,
                     backgroundColor: 'rgba(54, 162, 235, 0.2)',
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 1
                 }, {
-                    label: 'Số lượng sản phẩm bán được',
-                    data: <?= json_encode($dataProducts) ?>,
+                    label: 'Số đơn mới',
+                    data: <?= json_encode($data_new_orders) ?>,
                     backgroundColor: 'rgba(255, 99, 132, 0.2)',
                     borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }, {
+                    label: 'Số đơn đã vận chuyển',
+                    data: <?= json_encode($data_shipped_orders) ?>,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
                     borderWidth: 1
                 }]
             },
