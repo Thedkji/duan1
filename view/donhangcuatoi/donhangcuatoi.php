@@ -98,8 +98,10 @@
         
 
         if(is_array($list_donhangct_cuatoi)){
-            foreach($list_donhangct_cuatoi as $dhct){
-                extract($dhct);
+            for ($i=0; $i <count($list_donhangct_cuatoi) ; $i++) { 
+               extract($list_donhangct_cuatoi);
+            
+               
             ?>
             <tr>
                 <th>
