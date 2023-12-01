@@ -6,6 +6,7 @@ include_once('../model/sanpham.php');
 include('../model/binhluan.php');
 include('../model/taikhoan.php');
 include('../model/donhang.php');
+include('../model/thongke.php');
 include('public/head.php');
 include('public/nav.php');
 
@@ -183,6 +184,15 @@ if (isset($_GET['act'])) {
                     }
                 }
                 include('public/update_donhangct.php');
+                break;
+
+            case "thongke":
+                $listthongke=loadall_thongke();
+                include('public/list_thongke.php');
+                break;
+
+            case 'thongke_doanhthu':
+                include('public/thongke_doanhthu.php');
                 break;
             
         default:

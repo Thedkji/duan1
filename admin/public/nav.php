@@ -58,7 +58,15 @@
             </p>
           </a>
         </li>
-
+        <li class="nav-item">
+          <a href="index.php?act=thongke" class="nav-link">
+            <i class="nav-icon fa-solid fa-folder-open"></i>
+            <p>
+              Thống kê
+              
+            </p>
+          </a>
+        </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->
