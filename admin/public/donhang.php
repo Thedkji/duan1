@@ -46,7 +46,7 @@
                                         <th scope="col">Thành tiền</th>
                                         <th scope="col">ID đơn hàng chi tiết</th>
                                         <th scope="col">Quản lý</th>
-                                        <th scope="col"></th>
+                                        <th scope="col">Đơn hàng</th>
                                         <th scope="col">Thao tác</th>
 
                                                                                

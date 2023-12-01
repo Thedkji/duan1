@@ -77,9 +77,9 @@
     <table>
 
         <tr>
-            <th>Id_User</th>
-            <th>Phương thức thanh toán</th>
+            
             <th>Mã đơn hàng</th>
+            <th>Phương thức thanh toán</th>
             <th>Tổng tiền</th>
             <th>Họ tên</th>
             <th>Email</th>
@@ -103,15 +103,18 @@
             
                
             ?>
+            <?php
+            $thdh=ttnh($dhct['phuongthuc_tt']);
+            ?>
             <tr>
-                <th>
+                <th style="display: none;"><input type="hidden" name="<?= $id_user ?>">
                 <?= $id_user ?>
                 </th>
                 <th>
-                    <?= $phuongthuc_tt ?>
+                    <?= $madh ?>
                 </th>
                 <th>
-                    <?= $madh ?>
+                    <?= $thdh ?>
                 </th>
                 <th>
                     <?= number_format($tong_donhang) ?> VNĐ

@@ -202,7 +202,6 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
          case 'donhangcuatoi':
             if(isset($_GET['id_user'])){
                $list_donhangct_cuatoi=loadone_donhangct_dh_cuatoi($_GET['id_user']);
-               var_dump($list_donhangct_cuatoi);
             }
             
             include "view/donhangcuatoi/donhangcuatoi.php";

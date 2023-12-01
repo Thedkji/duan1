@@ -1,14 +1,11 @@
 <?php
 
-function taodonhang($id_user,$hoten,$diachi,$tel,$email,$tong_donhang,$phuongthuc_tt,$ngay_dathang,$madh){
-    $sql="insert into donhang_chitiet (id_user,hoten,diachi,tel,email,tong_donhang,phuongthuc_tt,ngay_dathang,madh) value ($id_user,'$hoten','$diachi',$tel,'$email',$tong_donhang,$phuongthuc_tt,'$ngay_dathang','$madh')";
-}
-function taodonhang($id_user,$id_sanpham,$hoten,$diachi,$tel,$email,$tong_donhang,$phuongthuc_tt,$ngay_dathang){
-    $sql="insert into donhang_chitiet (id_user,id_sanpham,hoten,diachi,tel,email,tong_donhang,phuongthuc_tt,ngay_dathang) value ($id_user,$id_sanpham,'$hoten','$diachi',$tel,'$email',$tong_donhang,$phuongthuc_tt,'$ngay_dathang')";
-
+function taodonhang($id_user,$id_sanpham,$hoten,$diachi,$tel,$email,$tong_donhang,$phuongthuc_tt,$ngay_dathang,$madh){
+    $sql="insert into donhang_chitiet (id_user,id_sanpham,hoten,diachi,tel,email,tong_donhang,phuongthuc_tt,ngay_dathang,madh) value ($id_user,$id_sanpham,'$hoten','$diachi',$tel,'$email',$tong_donhang,$phuongthuc_tt,'$ngay_dathang','$madh')";
     $id_donhangct = pdo_execute_last_insert_id($sql);
     return $id_donhangct;
 }
+
 function insert_giohang($id_user,$id_sanpham,$img,$ten_sp,$gia_sp,$soluong,$thanhtien,$id_donhangct){
     $sql="insert into donhang (id_user,id_sanpham,img,ten_sp,gia_sp,soluong,thanhtien,id_donhangct) value ($id_user,$id_sanpham,'$img','$ten_sp',$gia_sp,$soluong,$thanhtien,$id_donhangct)";
     pdo_execute($sql);
@@ -42,7 +39,7 @@ function loadone_donhangct($id_donhangct){
 
 function loadone_donhangct_dh_cuatoi($id_user){
     $sql="select * from donhang_chitiet where id_user=$id_user";
-    $load_one_dhct = pdo_query_one($sql);
+    $load_one_dhct = pdo_query($sql);
     return $load_one_dhct;
 }
 function load_one_donhangct($id_user) {
@@ -84,6 +81,21 @@ function get_ttdh($n){
             # code...
             $tt="Đơn hàng mới";
             break;
+    }
+    return $tt;
+}
+function ttnh($i){
+    switch ($i) {
+        case '1':
+            # code...
+            $tt="Thanh toán khi nhận hàng";
+            break;
+        // case '2':
+        //     $tt="Thanh toán online";
+        default:
+        $tt="Thanh toán khi nhận hàng";
+        break;
+        
     }
     return $tt;
 }
