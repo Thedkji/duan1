@@ -77,9 +77,9 @@
     <table>
 
         <tr>
-            <th>Id_User</th>
-            <th>Phương thức thanh toán</th>
+            
             <th>Mã đơn hàng</th>
+            <th>Phương thức thanh toán</th>
             <th>Tổng tiền</th>
             <th>Họ tên</th>
             <th>Email</th>
@@ -98,20 +98,20 @@
         
 
         if(is_array($list_donhangct_cuatoi)){
-            for ($i=0; $i <count($list_donhangct_cuatoi) ; $i++) { 
-               extract($list_donhangct_cuatoi);
-            
-               
+            foreach($list_donhangct_cuatoi as $dhct){
+                extract($dhct);
+            ?>
+            <?php
+            $thdh=ttnh($dhct['phuongthuc_tt']);
             ?>
             <tr>
-                <th>
-                <?= $id_user ?>
-                </th>
-                <th>
-                    <?= $phuongthuc_tt ?>
+                <th style="display: none;"><input type="hidden" name="<?= $id_user ?>">
                 </th>
                 <th>
                     <?= $madh ?>
+                </th>
+                <th>
+                    <?= $thdh ?>
                 </th>
                 <th>
                     <?= number_format($tong_donhang) ?> VNĐ

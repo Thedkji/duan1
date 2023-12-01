@@ -163,6 +163,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
 
          case 'thanhtoan':
             if (isset($_POST['thanhtoan']) && ($_POST['thanhtoan'])) {
+               $id_sanpham=$_POST['id_sanpham'];
                $hoten = $_POST['hoten'];
                $diachi = $_POST['diachi'];
                $tel = $_POST['tel'];
@@ -176,7 +177,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
                }else{
                   $id_user=0;
                }
-               $id_donhangct = taodonhang($id_user,$hoten, $diachi, $tel, $email, $tong_donhang, $phuongthuc_tt, $ngay_dathang,$madh);
+               $id_donhangct = taodonhang($id_user,$id_sanpham,$hoten, $diachi, $tel, $email, $tong_donhang, $phuongthuc_tt, $ngay_dathang,$madh);
                $_SESSION['donhangct']=$id_donhangct;
                //insert đơn hàng :$_SESSION['giohang'] & id_donhangct
                foreach ($_SESSION['giohang'] as $giohang) {
@@ -201,7 +202,6 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
          case 'donhangcuatoi':
             if(isset($_GET['id_user'])){
                $list_donhangct_cuatoi=loadone_donhangct_dh_cuatoi($_GET['id_user']);
-               var_dump($list_donhangct_cuatoi);
             }
             
             include "view/donhangcuatoi/donhangcuatoi.php";

@@ -153,19 +153,32 @@ if (isset($_GET['act'])) {
             include('public/donhang.php');
             break;
         
-        case 'donhangct':
-            if (isset($_GET['id_donhangct']) && $_GET['id_donhangct'] > 0) {
-                $id_donhangct = $_GET['id_donhangct'];
-                $listdhct = loadone_donhangct($id_donhangct);
-                
-                // Kiểm tra xem có dữ liệu không trước khi include file
-                if ($listdhct) {
-                    include('public/donhangct.php'); // Nơi hiển thị thông tin đơn hàng chi tiết
-                } else {
-                    echo "Không tìm thấy đơn hàng."; // Hoặc xử lý thông báo nếu không tìm thấy đơn hàng
-                }
-            }      
-            break;      
+            case 'donhangct':
+                if (isset($_GET['id_donhangct']) && $_GET['id_donhangct'] > 0) {
+                    $id_donhangct = $_GET['id_donhangct'];
+                    $listdhct = loadone_donhangct($id_donhangct);
+                    
+                    // Kiểm tra xem có dữ liệu không trước khi include file
+                    if ($listdhct) {
+                        include('public/donhangct.php'); // Nơi hiển thị thông tin đơn hàng chi tiết
+                    } else {
+                        echo "Không tìm thấy đơn hàng."; // Hoặc xử lý thông báo nếu không tìm thấy đơn hàng
+                    }
+                } 
+                break;
+            case 'chitietdh':
+                if (isset($_GET['id_user']) && $_GET['id_user'] > 0) {
+                    $id_ctdh = $_GET['id_user'];
+                    $listctdh = load_one_donhangct($id_ctdh);
+                    
+                    // Kiểm tra xem có dữ liệu không trước khi include file
+                    if ($listctdh) {
+                        include('public/chitietdh.php'); // Nơi hiển thị thông tin đơn hàng chi tiết
+                    } else {
+                        echo "Không tìm thấy đơn hàng."; // Hoặc xử lý thông báo nếu không tìm thấy đơn hàng
+                    }
+                } 
+                break;
             case 'update_donhangct':
                 if (isset($_GET['id_donhangct']) && $_GET['id_donhangct'] > 0) {
                     $id_donhangct = $_GET['id_donhangct'];

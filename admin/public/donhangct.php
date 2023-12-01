@@ -64,6 +64,7 @@
                                             <th scope="col"><?= $listdhct['ngay_dathang'] ?></th>
                                             <th scope="col" style="color:red;"><?= $ttdh ?></th>
                                             <th scope="col"><a href="<?= $sua_donhangct ?>"><input type="button" value="Sửa"></a></th>
+
                                         
                                             
                                         </tr>

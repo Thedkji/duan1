@@ -46,6 +46,7 @@
                                         <th scope="col">Thành tiền</th>
                                         <th scope="col">ID đơn hàng chi tiết</th>
                                         <th scope="col">Quản lý</th>
+                                        <th scope="col">Đơn hàng</th>
                                         <th scope="col">Thao tác</th>
 
                                                                                
@@ -70,6 +71,8 @@
                                             <th scope="col"><?= number_format($thanhtien) ?><span> VNĐ<span></th>
                                             <th scope="col"><?= $id_donhangct ?></th>
                                             <th scope="col"><a href="index.php?act=donhangct&id_donhangct=<?= $id_donhangct ?>">Chi tiết đơn hàng</a></th>
+                                            <th scope="col"><a href="index.php?act=chitietdh&id_user=<?= $id_user ?>">Chi tiết</a></th>
+
                                             <th><a href="<?= $xoa_donhang ?>"
                                                 onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"><input
                                                     type="button" value="Xóa"></a></th>
