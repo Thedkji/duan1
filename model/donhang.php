@@ -30,17 +30,17 @@ function loadall_donhangct(){
     $load_allctsp = pdo_query($sql);
     return $load_allctsp;
 }
-function loadone_donhangct($id_donhangct){
-    $sql="select * from donhang_chitiet where id_donhangct=$id_donhangct";
-    $load_onesp = pdo_query_one($sql);
-    return $load_onesp;
-}
 
 
 function loadone_donhangct_dh_cuatoi($id_user){
     $sql="select * from donhang_chitiet where id_user=$id_user";
     $load_one_dhct = pdo_query($sql);
     return $load_one_dhct;
+}
+function loadone_donhangct($id_donhangct){
+    $sql="select * from donhang_chitiet where id_donhangct=$id_donhangct";
+    $load_onesp = pdo_query_one($sql);
+    return $load_onesp;
 }
 function load_one_donhangct($id_user) {
     $sql="select donhang.id_user,donhang.gia_sp,donhang.soluong,sanpham.ten_sp,sanpham.img from donhang join sanpham on donhang.id_sanpham=sanpham.id_sanpham where id_user=$id_user";
@@ -77,6 +77,8 @@ function get_ttdh($n){
                         # code...
              $tt="Hoàn tất";
             break;
+        case '4':
+            $tt="Hủy";
         default:
             # code...
             $tt="Đơn hàng mới";

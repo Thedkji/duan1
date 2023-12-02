@@ -50,12 +50,13 @@
                                 <?php if ($listdhct): ?>
                                     <?php
                                         $ttdh=get_ttdh($listdhct['trangthai']);
+                                        $thdh=ttnh($listdhct['phuongthuc_tt']);
                                         $sua_donhangct = 'index.php?act=update_donhangct&id_donhangct='.$id_donhangct;
 
                                         ?>
                                         <tr>
                                             <th scope="col"><?= $listdhct['id_donhangct'] ?></th>
-                                            <th scope="col"><?= $listdhct['phuongthuc_tt'] ?></th>
+                                            <th scope="col"><?= $thdh ?></th>
                                             <th scope="col"><?= number_format($listdhct['tong_donhang']) ?><span> VNĐ<span></th>
                                             <th scope="col"><?= $listdhct['hoten'] ?></th>
                                             <th scope="col"><?= $listdhct['email'] ?></th>
@@ -64,6 +65,7 @@
                                             <th scope="col"><?= $listdhct['ngay_dathang'] ?></th>
                                             <th scope="col" style="color:red;"><?= $ttdh ?></th>
                                             <th scope="col"><a href="<?= $sua_donhangct ?>"><input type="button" value="Sửa"></a></th>
+                                            
 
                                         
                                             
@@ -78,6 +80,64 @@
                         <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
+                    <div class="card">
+    <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped" style="text-align:center;">
+            <thead>
+                <h4>Danh sách đơn hàng</h4>
+                <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Tên sản phẩm</th>
+                    <th scope="col">Ảnh</th>
+                    <th scope="col">Số lượng</th>
+                    <th scope="col">Giá</th>
+                    
+
+                </tr>
+            </thead>
+            
+            <tbody>
+            <tbody>
+    <?php
+    // Biến đếm để hiển thị số thứ tự
+    $count = 1;
+    
+    if ($listctdh):
+        // Hiển thị thông tin từ mảng $listctdh
+        foreach ($listctdh as $value):
+           
+    ?>
+        <tr>
+            <td><?= $count++ ?></td>
+            <td><?= $value['id_user'] ?></td>
+            <td><?= $value['ten_sp'] ?></td>
+            <td><img src="../img/<?= $value['img'] ?>" alt="" width="100px"></td>
+            <td><?= $value['soluong'] ?></td>
+            <td><?= number_format($value['gia_sp']) ?><span> VNĐ</span></td>
+        </tr>
+    <?php
+        endforeach;
+    
+    endif;
+    ?>
+    
+    <?php
+
+    ?>
+</tbody>
+
+</tbody>
+
+
+
+
+
+            
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
                 </div>
                 <!-- /.col -->
             </div>

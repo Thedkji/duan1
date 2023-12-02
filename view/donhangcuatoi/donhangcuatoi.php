@@ -135,7 +135,7 @@
                     <?php
                     switch ($trangthai) {
                         case '0':
-                            echo "<p style='color:green'>Đơn hàng mới</p>";
+                            echo "<p style='color:green'>Đang chuẩn bị hàng</p>";
                             break;
                         case '1':
                             echo "<p style='color:green'>Đang xử lý</p>";
@@ -146,6 +146,9 @@
                         case '3':
                             echo "<p style='color:green'>Đã giao</p>";
                             break;
+                            case '4':
+                                echo "<p style='color:green'>Đơn đã bị hủy</p>";
+                                break;
                     }
                     ?>
                 </th>

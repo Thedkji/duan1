@@ -34,7 +34,8 @@
                             0 => 'Đơn hàng mới',
                             1 => 'Đang xử lý',
                             2 => 'Đang giao hàng',
-                            3 => 'Đã nhận hàng'
+                            3 => 'Đã nhận hàng',
+                            4 => 'Hủy'
                             ];
                             ?>
                             <div class="mb-3">
