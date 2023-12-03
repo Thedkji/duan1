@@ -142,6 +142,9 @@ if (isset($_GET['act'])) {
                 $kyw="";
             }
             $listdonhang=load_all_donhang($kyw,0);
+            $listtaikhoan=load_all_taikhoan();
+            
+            
             include('public/donhang.php');
             break;
         case 'xoadonhang':
@@ -158,12 +161,17 @@ if (isset($_GET['act'])) {
                     $id_donhangct = $_GET['id_donhangct'];
                     $listdhct = loadone_donhangct($id_donhangct);
                     
+                    if(isset($_GET['id_user'])){
+                        $listdh = loadone_donhang_user($id_donhangct,$_GET['id_user']);
+                    }
                     // Kiểm tra xem có dữ liệu không trước khi include file
-                    if ($listdhct) {
+                    if (isset($listdhct)) {
                         include('public/donhangct.php'); // Nơi hiển thị thông tin đơn hàng chi tiết
                     } else {
                         echo "Không tìm thấy đơn hàng."; // Hoặc xử lý thông báo nếu không tìm thấy đơn hàng
                     }
+
+                   
                 } 
                 break;
             case 'chitietdh':

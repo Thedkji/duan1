@@ -86,7 +86,7 @@
   <input type="email" id="email" name="email" required value="<?= $email ?>">
 
    <p>Phương thức thanh toán:</p>
-   <span>Thanh toán khi nhận hàng</span><img src="img/thanh toán khi nhận.jpg" alt="" class='img_tt'><input type="radio" name='phuongthuc_tt' value="1" required >
+   <span>Thanh toán khi nhận hàng</span><img src="img/thanh toán khi nhận.jpg" alt="" class='img_tt'><input type="radio" name='phuongthuc_tt' value="1" required checked>
    <!-- <span>Thanh toán qua ngân hàng</span><img src="img/thanh toán ngân hàng.jpg" alt="" class='img_tt'><input type="radio" name='phuongthuc_tt' value="2" required>
    <span>Thanh toán qua momo</span><img src="img/thanh toán momo.png" alt="" class='img_tt img_tt_momo'><input type="radio" name='phuongthuc_tt' value="3" required>
    <span>Thanh toán qua vnpay</span><img src="img/thanh toán vnpay.png" alt="" class='img_tt img_tt_vnpay'><input type="radio" name='phuongthuc_tt' value="4" required> -->

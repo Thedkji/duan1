@@ -31,6 +31,11 @@ function loadall_donhangct(){
     return $load_allctsp;
 }
 
+function loadone_donhang_user($id_donhangct,$id_user){
+    $sql="select * from donhang where id_user=$id_user and id_donhangct=$id_donhangct";
+    $load_one_dhct = pdo_query($sql);
+    return $load_one_dhct;
+}
 
 function loadone_donhangct_dh_cuatoi($id_user){
     $sql="select * from donhang_chitiet where id_user=$id_user";

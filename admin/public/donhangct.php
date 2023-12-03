@@ -103,9 +103,9 @@
     // Biến đếm để hiển thị số thứ tự
     $count = 1;
     
-    if ($listctdh):
+    if ($listdh):
         // Hiển thị thông tin từ mảng $listctdh
-        foreach ($listctdh as $value):
+        foreach ($listdh as $value):
            
     ?>
         <tr>

@@ -70,7 +70,7 @@
                                             <th scope="col"><?= $soluong ?></th>
                                             <th scope="col"><?= number_format($thanhtien) ?><span> VNĐ<span></th>
                                             <th scope="col"><?= $id_donhangct ?></th>
-                                            <th scope="col"><a href="index.php?act=donhangct&id_donhangct=<?= $id_donhangct ?>">Chi tiết đơn hàng</a></th>
+                                            <th scope="col"><a href="index.php?act=donhangct&id_donhangct=<?= $id_donhangct ?>&id_user=<?= $id_user ?>">Chi tiết đơn hàng</a></th>
                                             <th scope="col"><a href="index.php?act=chitietdh&id_user=<?= $id_user ?>">Chi tiết</a></th>
 
                                             <th><a href="<?= $xoa_donhang ?>"
