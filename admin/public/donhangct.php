@@ -51,7 +51,8 @@
                                     <?php
                                         $ttdh=get_ttdh($listdhct['trangthai']);
                                         $thdh=ttnh($listdhct['phuongthuc_tt']);
-                                        $sua_donhangct = 'index.php?act=update_donhangct&id_donhangct='.$id_donhangct;
+                                
+                                        $sua_donhangct = "index.php?act=update_donhangct&id_donhangct=$id_donhangct";
 
                                         ?>
                                         <tr>

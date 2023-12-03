@@ -165,9 +165,9 @@
                             <div class="header-search">
                                 <button class="header-search-toggle"><i class="fa fa-search"></i></button>
                                 <div class="header-search-form">
-                                    <form action="#">
-                                        <input type="text" placeholder="Type and hit enter">
-                                        <button><i class="fa fa-search"></i></button>
+                                    <form action="index.php?act=sanpham" method="post">
+                                        <input type="text" placeholder="Nhập tên sản phẩm" name='kyw'>
+                                        <button type=submit name='timkiem'><i class="fa fa-search"></i></button>
                                     </form>
                                 </div>
                             </div>

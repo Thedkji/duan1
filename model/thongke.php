@@ -14,9 +14,9 @@ function load_thongke_doanhthu()
     $sql = "SELECT MONTH(ngay_dathang) AS thang, 
                    SUM(CASE WHEN trangthai = 3 THEN 1 ELSE 0 END) AS da_vanchuyen,
                    SUM(CASE WHEN trangthai = 0 THEN 1 ELSE 0 END) AS moi,
-                   SUM(tong_donhang) AS total_revenue
+                   SUM(tong_donhang) AS total_revenue 
             FROM donhang_chitiet
-            WHERE YEAR(ngay_dathang) = YEAR(CURRENT_DATE())
+            WHERE YEAR(ngay_dathang) = YEAR(CURRENT_DATE()) 
             GROUP BY MONTH(ngay_dathang)";
     
     try {

@@ -1,5 +1,6 @@
 <?php
 ob_start();
+session_start();
 include_once('../model/pdo.php');
 include_once('../model/danhmuc.php');
 include_once('../model/sanpham.php');
@@ -143,7 +144,7 @@ if (isset($_GET['act'])) {
             }
             $listdonhang=load_all_donhang($kyw,0);
             $listtaikhoan=load_all_taikhoan();
-            
+
             
             include('public/donhang.php');
             break;
@@ -159,8 +160,9 @@ if (isset($_GET['act'])) {
             case 'donhangct':
                 if (isset($_GET['id_donhangct']) && $_GET['id_donhangct'] > 0) {
                     $id_donhangct = $_GET['id_donhangct'];
-                    $listdhct = loadone_donhangct($id_donhangct);
                     
+                    $listdhct = loadone_donhangct($id_donhangct);
+                    $_SESSION['id_user']=$_GET['id_user'];
                     if(isset($_GET['id_user'])){
                         $listdh = loadone_donhang_user($id_donhangct,$_GET['id_user']);
                     }
@@ -200,7 +202,9 @@ if (isset($_GET['act'])) {
                         // Chuyển hướng hoặc thực hiện hành động tiếp theo sau khi cập nhật
             
                         // Ví dụ: chuyển hướng người dùng sau khi cập nhật
-                        header('Location: index.php?act=donhangct&id_donhangct='.$id_donhangct);
+                        $id_user=$_SESSION['id_user'];
+                        $address="index.php?act=donhangct&id_donhangct= $id_donhangct&id_user=$id_user";
+                        header("Location: $address");
                         exit(); // Kết thúc quá trình thực thi để tránh tiếp tục chạy mã
                     }
                 }

@@ -31,7 +31,7 @@
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped"style="text-align:center;">
                                 <thead>
-                                <form action="index.php?act=donhang" method="POST">
+                                <form action="index.php?act=donhang&id_user=<?=$_SESSION['id_user']?>" method="POST">
                                 <input type="text" name="kyw" id="" placeholder="Tìm kiếm id user......" style="width: 300px; ">
                                         <button style="color:black; width: 50px; background:#00FFFF;"><i class="ion-ios-search-strong" ></i></button>
                                 </form>
@@ -46,7 +46,6 @@
                                         <th scope="col">Thành tiền</th>
                                         <th scope="col">ID đơn hàng chi tiết</th>
                                         <th scope="col">Quản lý</th>
-                                        <th scope="col">Đơn hàng</th>
                                         <th scope="col">Thao tác</th>
 
                                                                                
@@ -55,7 +54,7 @@
                                  <?php foreach ($listdonhang as $listdh) {
                                     extract($listdh);
                                     $xoa_donhang = 'index.php?act=xoadonhang&id_donhang='.$id_donhang;
-
+                                    $_SESSION['id_user']=$id_user;
                                     
                                 ?> 
 
@@ -71,7 +70,6 @@
                                             <th scope="col"><?= number_format($thanhtien) ?><span> VNĐ<span></th>
                                             <th scope="col"><?= $id_donhangct ?></th>
                                             <th scope="col"><a href="index.php?act=donhangct&id_donhangct=<?= $id_donhangct ?>&id_user=<?= $id_user ?>">Chi tiết đơn hàng</a></th>
-                                            <th scope="col"><a href="index.php?act=chitietdh&id_user=<?= $id_user ?>">Chi tiết</a></th>
 
                                             <th><a href="<?= $xoa_donhang ?>"
                                                 onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"><input

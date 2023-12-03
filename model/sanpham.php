@@ -26,6 +26,12 @@ function xoa_sanpham($id_sanpham){
     pdo_execute($sql);
 }
 
+    function load_all_sp_kyw($kyw){
+    $sql = "select*from sanpham where ten_sp like '%".$kyw."%' order by id_sanpham desc";
+    $listsanpham = pdo_query($sql);
+    return $listsanpham;
+}
+
 function load_onesp($id_sanpham){
     $sql='select * from sanpham where id_sanpham='.$id_sanpham;
     $load_onesp = pdo_query_one($sql);

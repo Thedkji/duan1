@@ -29,8 +29,12 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
          $listsanpham = load_all_sp();
          $listdanhmuc = load_all_dm();
          $sp_banchay = load_all_sp_banchay();
-         if (isset($_GET['iddm']) && $_GET['iddm'] > 0) {
+         if (isset($_GET['iddm']) && $_GET['iddm'] > 0 && !isset($_POST['timkiem'])) {
             $listsanpham = load_all_sp_danhmuc($_GET['iddm']);
+         }
+         else if(isset($_POST['timkiem'])&&!isset($_GET['iddm'])){
+            $kyw=$_POST['kyw'];
+            $listsanpham = load_all_sp_kyw($kyw);
          }
          include 'view/sanpham/sanpham.php';
          break;
@@ -46,6 +50,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             $load_one_dm = load_one_dm($_GET['iddm']);
             extract($load_one_dm);
          }
+        
          include 'view/chitietsanpham/chitietsanpham.php';
          break;
       case "dangky":

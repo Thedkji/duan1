@@ -49,8 +49,9 @@
                                 </div>
                                 
                                 <div class="mb-3">
+                                    
                                     <button type="submit" class="btn btn-primary" name="suadonhangct">Cập nhật trạng thái</button>
-                                    <a href="index.php?act=donhangct&id_donhangct=<?= $id_donhangct ?>"class="btn btn-secondary">Quay lại</a>
+                                    <a href="index.php?act=donhangct&id_donhangct=<?= $id_donhangct ?>&id_user=<?= $_SESSION['id_user'] ?>"class="btn btn-secondary">Quay lại</a>
                                 </div>
                             </form>
                         </div>

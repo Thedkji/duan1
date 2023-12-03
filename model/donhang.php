@@ -86,7 +86,7 @@ function get_ttdh($n){
             $tt="Hủy";
         default:
             # code...
-            $tt="Đơn hàng mới";
+           
             break;
     }
     return $tt;
