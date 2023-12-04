@@ -12,8 +12,6 @@ include "view/index/header.php";
 include "golbal.php";
 
 
-
-
 $dstop10 = loadall_sanpham_top10();
 $sptopct = loadall_sanpham_topchitiet();
 $topsale = loadall_sanpham_topsale();
@@ -55,12 +53,40 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
          break;
       case "dangky":
          if (isset($_POST['dangky']) && ($_POST['dangky'])) {
+            $hoten=$_POST['hoten'];
             $email = $_POST['email'];
             $tel = $_POST['tel'];
             $user = $_POST['user'];
             $pass = $_POST['pass'];
-            insert_taikhoan($email, $tel, $user, $pass, 0);
-            $thongbao = "Đã đăng ký thành công. Vui lòng đăng nhập để thực hiện chức năng bình luận hoặc đặt hàng!";
+            $listtk=load_all_taikhoan();
+            foreach($listtk as $tk){
+               if($hoten==$tk['hoten']||$email==$tk['email']||$tel==$tk['tel']||$user==$tk['user']){
+                  $hoten=$tk['hoten'];
+                  $email = $tk['email'];
+                  $tel = $tk['tel'];
+                  $user = $tk['user'];
+                  $check_dk= array($hoten,$email,$tel, $user);
+                  
+                  $thongbao1 = "<h3 style=color:red>Thông tin bạn đăng ký đã tồn tại vui lòng nhập dữ liệu khác</h3>";
+                  break;
+               } else if($_POST['hoten']==""||$_POST['email']==""||$_POST['tel']==""||$_POST['user']==""){
+                  echo "";
+               }
+            }
+            if(!isset($check_dk)){
+               $check=true;
+               insert_taikhoan($hoten,$email, $tel, $user, $pass, 0);
+               $thongbao = "<h3 style=color:green>Đã đăng ký thành công. Vui lòng đăng nhập để thực hiện chức năng bình luận hoặc đặt hàng!</h3>";
+   
+               
+            }else{
+               $check=false;
+               $thongbao="";
+            }
+              
+            
+           
+
          }
 
          include "view/taikhoan/dangky.php";
@@ -89,13 +115,14 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
 
       case 'thongtincuatoi':
          if (isset($_POST['capnhat']) && $_POST['capnhat']) {
+            $hoten=$_POST['hoten'];
             $id_user = $_POST['id_user'];
             $email = $_POST['email'];
             $tel = $_POST['tel'];
             $user = $_POST['user'];
             $pass = $_POST['pass'];
             $diachi = $_POST['diachi'];
-            update_taikhoan($id_user, $email, $tel, $user, $pass, $diachi);
+            update_taikhoan($hoten,$id_user, $email, $tel, $user, $pass, $diachi);
             $_SESSION['user'] = checkuser($user, $pass);
             $thongbao = "Cập nhật thông tin thành công";
          }
@@ -211,6 +238,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             
             include "view/donhangcuatoi/donhangcuatoi.php";
             break;
+<<<<<<< HEAD
          case 'capnhat_giohang':
             // index.php?act=capnhat_giohang
 
@@ -239,6 +267,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['act']) && $_GET['act']
    exit();
 }
 
+=======
+
+            case 'capnhat_giohang':
+               // index.php?act=capnhat_giohang
+   
+   // Đoạn mã xử lý cập nhật số lượng
+   if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['act']) && $_GET['act'] === 'capnhat_giohang') {
+      $id_sanpham = $_POST['id_sanpham'];
+      $soluong_moi = $_POST['soluong'];
+   
+      // Tìm sản phẩm trong giỏ hàng và cập nhật số lượng
+      foreach ($_SESSION['giohang'] as &$giohang) {
+          if ($giohang[0] == $id_sanpham) {
+              $giohang[5] = $soluong_moi;
+              $giohang[6] = $giohang[3] * $soluong_moi; // Cập nhật thành tiền mới
+          }
+      }
+   
+      // Cập nhật tổng tiền sau khi thay đổi số lượng
+      $tongtien_moi = 0;
+      foreach ($_SESSION['giohang'] as $giohang) {
+          $tongtien_moi += $giohang[6];
+      }
+      $_SESSION['tongtien'] = $tongtien_moi;
+   
+      // Redirect hoặc hiển thị lại trang giỏ hàng sau khi cập nhật
+      header('Location: index.php?act=add_giohang');
+      exit();
+   }
+   
+>>>>>>> 2664dc7 (Phuong update dk tk validate dk 4/12/2023)
    }
    
 

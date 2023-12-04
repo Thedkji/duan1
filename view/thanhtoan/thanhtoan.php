@@ -107,7 +107,7 @@
     th, td {
       padding: 12px;
       text-align: center;
-      border-bottom: 1px solid #ddd;
+border-bottom: 1px solid #ddd;
       
     }
 

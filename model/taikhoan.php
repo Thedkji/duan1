@@ -1,16 +1,16 @@
 <?php
-function insert_taikhoan($email,$tel,$user,$pass,$diachi){
+function insert_taikhoan($hoten,$email,$tel,$user,$pass,$diachi){
     $sql="insert into taikhoan";
     if($diachi!=0){
-        $sql.="(email,tel,user,pass) value ('$email',$tel,'$user','$pass')";
+        $sql.="(hoten,email,tel,user,pass) value ('$hoten','$email',$tel,'$user','$pass')";
     }else{
-        $sql.="(email,tel,user,pass,diachi) value ('$email',$tel,'$user','$pass','$diachi')";
+        $sql.="(hoten,email,tel,user,pass,diachi) value ('$hoten','$email',$tel,'$user','$pass','$diachi')";
     }
     pdo_execute($sql);
 }
 
-function update_taikhoan($id_user,$email,$tel,$user,$pass,$diachi){
-    $sql="update taikhoan set email='$email',tel=$tel,user='$user',pass='$pass',diachi='$diachi' where id_user= $id_user";
+function update_taikhoan($hoten,$id_user,$email,$tel,$user,$pass,$diachi){
+    $sql="update taikhoan set hoten='$hoten',email='$email',tel=$tel,user='$user',pass='$pass',diachi='$diachi' where id_user= $id_user";
     pdo_execute($sql);
 }
 

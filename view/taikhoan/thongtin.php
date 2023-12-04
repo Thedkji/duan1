@@ -13,6 +13,10 @@
                         <input name="id_user" type="hidden" value=<?= $_SESSION['user']['id_user'] ?>>
                     </div>
                     <div class="form-fild">
+                        <p><label>Họ tên<span class="required">*</span></label></p>
+                        <input name="hoten" type="text" value=<?= $_SESSION['user']['hoten'] ?>>
+                    </div>
+                    <div class="form-fild">
                         <p><label>Email<span class="required">*</span></label></p>
                         <input name="email" type="email" value=<?= $_SESSION['user']['email'] ?>>
                     </div>
