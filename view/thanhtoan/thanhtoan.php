@@ -193,7 +193,7 @@
 </table>  
 
 <div class="muahang">
-  <input type="button" value="Mua thêm"><a href="index.php"></a></input>
+<a href="index.php"><input type="button" value="Mua thêm"></input></a>
   <input type="submit" name='thanhtoan' value='Thanh toán'></input>
 </div>
 </form>
