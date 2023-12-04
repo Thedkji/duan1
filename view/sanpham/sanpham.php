@@ -41,12 +41,9 @@ foreach ($listdanhmuc as $dsdm) {
                     </p>
                 </div>
                 <div class="thongtinsanpham">
-                    <div class="muahang">
-                        <button><a href="">Mua hàng</a></button>
-                    </div>
                    
                     <div class="muahang">
-                        <input type="submit" name="add_giohang" value="Thêm vào giỏ" style="background-color: white;width: 122px;height: 50px;border:1px solid gray"></input>
+                        <input type="submit" name="add_giohang" value="Thêm vào giỏ" style="background-color: white;width: 250px;height: 40px;border:1px solid gray;text-align:center;"></input>
                     </div>
                 </div>
             </div>
@@ -78,10 +75,7 @@ foreach ($listdanhmuc as $dsdm) {
                 </div>
                 <div class="thongtinsanpham">
                     <div class="muahang">
-                        <button><a href="">Mua hàng</a></button>
-                    </div>
-                    <div class="muahang">
-                        <button><a href="">Thêm vào giỏ</a></button>
+                    <input type="submit" name="add_giohang" value="Thêm vào giỏ" style="background-color: white;width: 250px;height: 40px;border:1px solid gray;text-align:center;"></input>
                     </div>
                 </div>
             </div>

@@ -99,7 +99,13 @@
     <th><?= $giohang[2] ?></th>
     <th><?= number_format($giohang[3]) ?> VNĐ</th>
     <th><?= number_format($giohang[4]) ?> VNĐ</th>
-    <th><?= $giohang[5] ?></th>
+    <th>
+        <form method="post" action="index.php?act=capnhat_giohang">
+            <input type="hidden" name="id_sanpham" value="<?= $giohang[0] ?>">
+            <input type="number" name="soluong" value="<?= $giohang[5] ?>" min="1" style="width: 40px;";>
+            <button type="submit" style="background-color: #4CAF50; color:white;">Cập nhật</button>
+        </form>
+    </th>
     <th><?= number_format($giohang[6]) ?> VNĐ</th>
     <th><a href="index.php?act=xoa_giohang&id_cart=<?= $j ?>" onclick="return confirm('Bạn có muốn xóa')">Xóa</a></th>
   </tr>
