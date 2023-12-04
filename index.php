@@ -238,7 +238,7 @@ if (isset($_GET['act']) && $_GET['act'] != "") {
             
             include "view/donhangcuatoi/donhangcuatoi.php";
             break;
-<<<<<<< HEAD
+
          case 'capnhat_giohang':
             // index.php?act=capnhat_giohang
 
@@ -266,38 +266,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['act']) && $_GET['act']
    header('Location: index.php?act=add_giohang');
    exit();
 }
-
-=======
-
-            case 'capnhat_giohang':
-               // index.php?act=capnhat_giohang
    
-   // Đoạn mã xử lý cập nhật số lượng
-   if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['act']) && $_GET['act'] === 'capnhat_giohang') {
-      $id_sanpham = $_POST['id_sanpham'];
-      $soluong_moi = $_POST['soluong'];
-   
-      // Tìm sản phẩm trong giỏ hàng và cập nhật số lượng
-      foreach ($_SESSION['giohang'] as &$giohang) {
-          if ($giohang[0] == $id_sanpham) {
-              $giohang[5] = $soluong_moi;
-              $giohang[6] = $giohang[3] * $soluong_moi; // Cập nhật thành tiền mới
-          }
-      }
-   
-      // Cập nhật tổng tiền sau khi thay đổi số lượng
-      $tongtien_moi = 0;
-      foreach ($_SESSION['giohang'] as $giohang) {
-          $tongtien_moi += $giohang[6];
-      }
-      $_SESSION['tongtien'] = $tongtien_moi;
-   
-      // Redirect hoặc hiển thị lại trang giỏ hàng sau khi cập nhật
-      header('Location: index.php?act=add_giohang');
-      exit();
-   }
-   
->>>>>>> 2664dc7 (Phuong update dk tk validate dk 4/12/2023)
    }
    
 

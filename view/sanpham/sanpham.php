@@ -24,7 +24,7 @@
                 <div class="anhsp">
                     <img src="img/<?= $img ?>" alt="">
                 </div>
-<<<<<<< HEAD
+
                 <div class="giasp">
                     <p>
                         <?=number_format($gia_sp) ?>  <span style="color: red; font-size: 16px;">đ</span>
@@ -39,7 +39,7 @@
                    
                     <div class="muahang">
                         <input type="submit" name="add_giohang" value="Thêm vào giỏ" style="background-color: white;width: 250px;height: 40px;border:1px solid gray;text-align:center;"></input>
-=======
+
                 <div class="thongtinsp">
                     <div class="tensp">
                         <h4>
@@ -64,7 +64,7 @@
                             <input type="submit" name="add_giohang" value="Thêm vào giỏ"
                                 style="background-color: white;width: 250px;height: 40px;border:1px solid gray;text-align:center;"></input>
                         </div>
->>>>>>> 2664dc7 (Phuong update dk tk validate dk 4/12/2023)
+
                     </div>
                 </div>
             </div>
@@ -82,7 +82,6 @@
                 <div class="anhsp">
                     <img src="img/<?= $img ?>" alt="">
                 </div>
-<<<<<<< HEAD
                 <div class="giasp">
                     <p>
                         <?= number_format($gia_sp) ?> <span style="color: red; font-size: 16px;">đ</span>
@@ -91,7 +90,6 @@
                 <div class="thongtinsanpham">
                     <div class="muahang">
                     <input type="submit" name="add_giohang" value="Thêm vào giỏ" style="background-color: white;width: 250px;height: 40px;border:1px solid gray;text-align:center;"></input>
-=======
                 <div class="thongtinsp">
                     <div class="tensp">
                         <h4>
@@ -108,7 +106,6 @@
                             <input type="submit" name="add_giohang" value="Thêm vào giỏ"
                                 style="background-color: white;width: 250px;height: 40px;border:1px solid gray;text-align:center;"></input>
                         </div>
->>>>>>> 2664dc7 (Phuong update dk tk validate dk 4/12/2023)
                     </div>
                 </div>
             </div>
