@@ -24,22 +24,6 @@
                 <div class="anhsp">
                     <img src="img/<?= $img ?>" alt="">
                 </div>
-
-                <div class="giasp">
-                    <p>
-                        <?=number_format($gia_sp) ?>  <span style="color: red; font-size: 16px;">đ</span>
-                    </p>
-                </div>
-                <div class="giacu" style=" text-decoration: line-through;">
-                    <p>
-                        <?=number_format($giacu) ?>  <span style="color: red; font-size: 16px;">đ</span>
-                    </p>
-                </div>
-                <div class="thongtinsanpham">
-                   
-                    <div class="muahang">
-                        <input type="submit" name="add_giohang" value="Thêm vào giỏ" style="background-color: white;width: 250px;height: 40px;border:1px solid gray;text-align:center;"></input>
-
                 <div class="thongtinsp">
                     <div class="tensp">
                         <h4>
@@ -64,7 +48,6 @@
                             <input type="submit" name="add_giohang" value="Thêm vào giỏ"
                                 style="background-color: white;width: 250px;height: 40px;border:1px solid gray;text-align:center;"></input>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -82,14 +65,6 @@
                 <div class="anhsp">
                     <img src="img/<?= $img ?>" alt="">
                 </div>
-                <div class="giasp">
-                    <p>
-                        <?= number_format($gia_sp) ?> <span style="color: red; font-size: 16px;">đ</span>
-                    </p>
-                </div>
-                <div class="thongtinsanpham">
-                    <div class="muahang">
-                    <input type="submit" name="add_giohang" value="Thêm vào giỏ" style="background-color: white;width: 250px;height: 40px;border:1px solid gray;text-align:center;"></input>
                 <div class="thongtinsp">
                     <div class="tensp">
                         <h4>

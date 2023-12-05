@@ -61,9 +61,7 @@
 <?php
 if(isset($list_donhangct)&&is_array($list_donhangct))
    {?>
-<?php
-            $thdh=ttnh($list_donhangct['phuongthuc_tt']);
-            ?>
+
    <input type="hidden"  name='tongtien'>
     <h2 style="color: #45a049;">Đặt hàng thành công</h2>
   <label >Người đặt hàng:</label>
@@ -88,7 +86,7 @@ if(isset($list_donhangct)&&is_array($list_donhangct))
   <input type="email" id="email" name="email" required readonly value="<?= number_format($list_donhangct['tong_donhang'])?> VNĐ">
 
   <label >Phương thức thanh toán:</label>
-  <input type="email" id="email" name="email" required readonly value="<?= $thdh ?>">
+  <input type="email" id="email" name="email" required readonly value="<?= $list_donhangct['phuongthuc_tt'] ?>">
   <?php } ?>
 
   <h2>Chi tiết giỏ hàng</h2>

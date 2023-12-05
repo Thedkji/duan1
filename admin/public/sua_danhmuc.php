@@ -42,7 +42,7 @@ if(is_array($danhmuc)){
                                 <div class="modal-body">
                                     <div class="mb-3">
                                         <input type="text" class="form-control" name="id_danhmuc"
-                                            placeholder="Mã danh mục" disabled>
+                                            placeholder="Mã danh mục" disabled required>
                                     </div>
                                 </div>
                                 <div class="modal-body">
