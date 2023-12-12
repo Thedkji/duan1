@@ -36,24 +36,24 @@
                                 <div class="modal-body">
                                     <div class="mb-3">
                                         <input type="text" class="form-control" name="ten_sp"
-                                            placeholder="Tên sản phẩm">
+                                            placeholder="Tên sản phẩm"required>
                                     </div>
                                     <div class="mb-3">
                                         <input type="text" class="form-control" name="gia_sp"
-                                            placeholder="Giá sản phẩm">
+                                            placeholder="Giá sản phẩm"required>
                                     </div>
                                     
                                     
                                     <div class="mb-3">
                                         <label for="topic-name" class="col-form-label">Hình ảnh</label>
-                                        <input type="file" name="img" class="col-form-label" id="">
+                                        <input type="file" name="img" class="col-form-label" id=""required>
                                     </div>
                                     <div class="mb-3">
                                         <input type="date" class="form-control" name="ngay_nhap"
-                                            placeholder="Ngày nhập">
+                                            placeholder="Ngày nhập"required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="topic-name" class="col-form-label">Mô tả</label>
+                                        <label for="topic-name" class="col-form-label"required>Mô tả</label>
                                         <textarea name="mo_ta" id="" cols="30" rows="5"
                                             style="width:100%; border:1px #CCC solid" class="col-form-label"></textarea>
                                     </div>

@@ -79,54 +79,7 @@
     </section>
     <!-- /.content -->
 </div>
-<!-- /.content-wrapper -->
 
-<!-- <div class=" modal fade" id="modal-default">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title">Thêm thành viên mới</h4>
-                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <form action="" method="POST">
-                                                            <div class="modal-body">
-                                                                <div class="mb-3">
-                                                                    <label for="topic-name"
-                                                                        class="col-form-label">Username:</label>
-                                                                    <input type="text" class="form-control"
-                                                                        name="username" placeholder="Tên tài khoản">
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for="topic-name"
-                                                                        class="col-form-label">Password:</label>
-                                                                    <input type="password" class="form-control"
-                                                                        name="password" placeholder="Mật khẩu">
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <div class="form-group">
-                                                                        <label for="level" class="col-form-label">Chức
-                                                                            vụ:</label>
-                                                                        <select class="form-control select2"
-                                                                            name="level">
-                                                                            <option selected value="member">Thành viên
-                                                                            </option>
-                                                                            <option value="admin">Quản trị viên</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="modal-footer justify-content-between">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                    data-dismiss="modal">Close</button>
-                                                                <button type="button" class="btn btn-primary">Save
-                                                                    changes</button>
-                                                            </div>
-                                                        </form>
-
-                                                    </div> -->
 <!-- /.modal-content -->
 </div>
 <!-- /.modal-dialog -->

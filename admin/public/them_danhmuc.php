@@ -29,8 +29,8 @@
                         </div> -->
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="" method="POST" enctype="multipart/form-data">
-                                <div class="modal-footer justify-content-between">
+                        <form action="" method="POST" enctype="multipart/form-data" >    
+                                                    <div class="modal-footer justify-content-between">
                                     <a href="index.php?act=danhmuc"><button type="button" class="btn btn-primary"
                                             name="them_danhmuc">Quay lại</button></a>
                                 </div>
@@ -42,8 +42,8 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="mb-3">
-                                        <input type="text" class="form-control" name="ten_danhmuc"
-                                            placeholder="Tên danh mục">
+                                    <input type="text" class="form-control" name="ten_danhmuc" id="ten_danhmuc" placeholder="Tên danh mục" required>
+
                                     </div>
                                 </div>
 
@@ -67,4 +67,6 @@
     </section>
 <!-- /.content -->
 </div>
+
+
 <!-- /.content-wrapper -->
