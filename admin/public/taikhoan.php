@@ -1,5 +1,5 @@
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+<div class="content-wrapper"style="width:1400px";>
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
@@ -18,11 +18,11 @@
     </section>
 
     
-    <section class="content">
+    <section class="content"style="width:1400px";>
         <div class="container-fluid">
             
             <div class="row">
-                <div class="col-12">
+                <div class="col-12" >
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title ">Danh sách tài khoản</h3>
@@ -40,6 +40,7 @@
                                         <th scope="col">Phone</th>
                                         <th scope="col">Vai trò</th>
                                         <th scope="col">Địa chỉ</th>
+                                        <th scope="col"></th>
 
                                     </tr>
                                 </thead>
