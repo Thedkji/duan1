@@ -47,8 +47,8 @@
                                             if($_SESSION['user']['role'] == 1){
                                             ?>
                                             <li><a href="admin/index.php">Trang quản trị</a></li>
+                                            <?php }?>
                                             <li><a href="index.php?act=donhangcuatoi&id_user=<?= $_SESSION['user']['id_user']?>">Đơn hàng của tôi</a></li>
-                                            <?php }?> 
                                             <li><a href="index.php?act=dangxuat">Đăng xuất</a></li>
                                             <!-- <li><a href="login-register.html">Sign In</a></li> -->
                                         </ul>
