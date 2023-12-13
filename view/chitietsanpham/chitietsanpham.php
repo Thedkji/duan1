@@ -54,7 +54,7 @@
                     <input type="hidden" value="<?= $giacu ?>" name="giacu">
 
                     <div class="product-quantity">
-                        <input value="1" type="number" name='sl'>
+                        <input value="1" type="number" name='sl' min=1 max=10>
                     </div>
                     <div class="add-to-link">
                         <input type="submit" class="product-add-btn" data-text="add to cart" value="Thêm vào giỏ hàng"

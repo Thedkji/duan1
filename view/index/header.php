@@ -81,7 +81,7 @@
                         <!--Logo start-->
                         <div class="col-lg-3 col-md-3 col-6 order-lg-1 order-md-1 order-1">
                             <div class="logo">
-                                <a href="index.php"><img src="assets/images/logo.png"   alt="logo TG shop" width="150px"></a>
+                                <a href="index.php"><img src="img/logo.png"   alt="logo TG shop" width="150px"></a>
                             </div>
                         </div>
                         <!--Logo end-->
@@ -151,10 +151,9 @@
                                             </ul>
                                          -->
                                     </li>
-                                    <li><a href="blog.html">Liên Hệ</a>
-                                    </li>
+                                
                                     <!-- <!-- <li><a href="about.html">About Us</a></li> -->
-                                    <li><a href="contact.html">Giới thiệu</a></li>
+                                    <li><a href="index.php?act=gioithieu">Giới thiệu</a></li>
                                 </ul>
                             </nav>
                         </div>

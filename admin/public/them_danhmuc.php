@@ -34,12 +34,7 @@
                                     <a href="index.php?act=danhmuc"><button type="button" class="btn btn-primary"
                                             name="them_danhmuc">Quay lại</button></a>
                                 </div>
-                                <div class="modal-body">
-                                    <div class="mb-3">
-                                        <input type="text" class="form-control" name="id_danhmuc"
-                                            placeholder="Mã danh mục" disabled>
-                                    </div>
-                                </div>
+                              
                                 <div class="modal-body">
                                     <div class="mb-3">
                                     <input type="text" class="form-control" name="ten_danhmuc" id="ten_danhmuc" placeholder="Tên danh mục" required>
@@ -52,7 +47,9 @@
                                         <input type="submit" name='themmoi' value='Thêm danh mục'>
                                    
                                 </div>
-
+                            <?php if(isset($thongbao)){
+                                echo $thongbao;   
+                            }?>
                             </form>
                         </div>
                         <!-- /.card-body -->

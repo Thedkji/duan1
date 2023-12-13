@@ -77,7 +77,11 @@
                                     <button type="submit" class="btn btn-primary" name="themsanpham">Thêm sản
                                         phẩm</button>
                                 </div>
-
+                                <div>
+                                    <?php if(isset($thongbao)){
+                                        echo $thongbao;
+                                    }?>
+                                </div>
                             </form>
                         </div>
                         <!-- /.card-body -->
